@@ -11,8 +11,6 @@ public class Product {
     private double price;
     private String image;
     private String description;
-    // @TODO: create Review class
-    // private List<Review> reviews;
 
 
     public Product(String name, double price, String image, String description) {

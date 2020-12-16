@@ -7,14 +7,21 @@ import androidx.room.PrimaryKey;
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "orderItem",
-        foreignKeys = @ForeignKey(entity = Product.class,
-                                  parentColumns = "id",
-                                  childColumns = "productId",
-                                  onDelete = CASCADE))
+        foreignKeys = {
+            @ForeignKey(entity = Product.class,
+                        parentColumns = "id",
+                        childColumns = "productId",
+                    onDelete = CASCADE),
+            @ForeignKey(entity = Order.class,
+                        parentColumns = "id",
+                        childColumns = "orderId",
+                        onDelete = CASCADE)
+        })
 public class OrderItem {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int productId;
+    private int orderId;
     private int quantity;
 
     public OrderItem(int productId, int quantity) {
@@ -36,6 +43,14 @@ public class OrderItem {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public int getQuantity() {

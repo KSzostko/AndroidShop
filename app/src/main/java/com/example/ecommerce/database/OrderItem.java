@@ -1,4 +1,4 @@
-package com.example.ecommerce;
+package com.example.ecommerce.database;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;

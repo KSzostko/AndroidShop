@@ -1,4 +1,4 @@
-package com.example.ecommerce;
+package com.example.ecommerce.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

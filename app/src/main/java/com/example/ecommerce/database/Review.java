@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.io.File;
 import java.util.Date;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -19,6 +20,8 @@ public class Review {
     private int productId;
     private int score;
     private String reviewText;
+    // @TODO: image probably needs to be stored in some specific way in the db
+    private File image;
     private Date date;
 
     public Review(int productId, int score, String reviewText, Date date) {
@@ -62,6 +65,14 @@ public class Review {
 
     public Date getDate() {
         return date;
+    }
+
+    public File getImage() {
+        return image;
+    }
+
+    public void setImage(File image) {
+        this.image = image;
     }
 
     public void setDate(Date date) {

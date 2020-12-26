@@ -21,10 +21,10 @@ public class Review {
     private int score;
     private String reviewText;
     // @TODO: image probably needs to be stored in some specific way in the db
-    private File image;
-    private Date date;
+    //private File image;
+    private String date;
 
-    public Review(int productId, int score, String reviewText, Date date) {
+    public Review(int productId, int score, String reviewText, String date) {
         this.productId = productId;
         this.score = score;
         this.reviewText = reviewText;
@@ -63,19 +63,19 @@ public class Review {
         this.reviewText = reviewText;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public File getImage() {
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    /*public File getImage() {
         return image;
     }
 
     public void setImage(File image) {
         this.image = image;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    }*/
 }

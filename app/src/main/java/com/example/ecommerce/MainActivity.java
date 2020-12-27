@@ -3,6 +3,7 @@ package com.example.ecommerce;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
                 switch(item.getItemId()) {
                     case R.id.action_home:
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, TestActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.action_search:
                         Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();

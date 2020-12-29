@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.ecommerce.dummy.DummyContent.DummyItem;
@@ -35,8 +36,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mTitleView.setText(mValues.get(position).id);
+        holder.mProductPriceView.setText(mValues.get(position).content);
     }
 
     @Override
@@ -46,29 +47,32 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public final ImageView mImageView;
+        public final TextView mTitleView;
+        public final TextView mProductPriceView;
+        public final RatingBar mProductRatingView;
+        public final ImageView mProductImageView;
         public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
 
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mTitleView = (TextView) view.findViewById(R.id.product_title);
+            mProductPriceView = (TextView) view.findViewById(R.id.product_price);
+            mProductRatingView = (RatingBar) view.findViewById(R.id.product_rating);
+            mProductRatingView.setRating(3.5f);
 
-            mImageView = (ImageView) view.findViewById(R.id.product_image);
+            mProductImageView = (ImageView) view.findViewById(R.id.product_image);
             String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-300-t.png";
             // loading img
             Picasso.get()
                     .load(testImgUrl)
-                    .into(mImageView);
+                    .into(mProductImageView);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mProductPriceView.getText() + "'";
         }
     }
 }

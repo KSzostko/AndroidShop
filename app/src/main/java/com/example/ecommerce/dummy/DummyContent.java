@@ -38,7 +38,8 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        return new DummyItem(
+                "MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X", "8099,00zł", makeDetails(position));
     }
 
     private static String makeDetails(int position) {

@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ecommerce.dummy.DummyContent.DummyItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -46,15 +48,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final ImageView mImageView;
         public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
 
-            String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-300-t.png";
             mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+
+            mImageView = (ImageView) view.findViewById(R.id.product_image);
+            String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-300-t.png";
+            // loading img
+            Picasso.get()
+                    .load(testImgUrl)
+                    .into(mImageView);
         }
 
         @Override

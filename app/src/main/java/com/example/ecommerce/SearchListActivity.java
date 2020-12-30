@@ -8,11 +8,6 @@ import android.os.Bundle;
 public class SearchListActivity extends BottomNavActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     protected Fragment createFragment() {
         return new ProductListFragment();
     }

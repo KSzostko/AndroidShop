@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- TODO: Maybe change layout -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProductDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/details_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- TODO: Remove text placeholders and add real values with intent -->
     <TextView
+        android:id="@+id/details_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X" />
 
+    <!--  TODO: here a dropdown with different currencies will be needed  -->
+    <TextView
+        android:id="@+id/details_price"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="8099,00" />
+
+    <!-- TODO: Add Floating Action Button instead of regular Button for this   -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buy"/>
+
+    <!--  TODO: here will be tab navigation with options for description and reviews  -->
 </FrameLayout>

@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,8 +26,10 @@ public class ProductDetailsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ImageView mProductImageView;
+    private TextView mProductNameView;
+    private TextView mProductPriceView;
+    private Button mBuyButton;
 
     public ProductDetailsFragment() {
         // Required empty public constructor
@@ -50,15 +57,26 @@ public class ProductDetailsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            //mParam1 = getArguments().getString(ARG_PARAM1);
+            //mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_product_details, container, false);
+
+        mProductImageView = view.findViewById(R.id.details_image);
+        mProductNameView = view.findViewById(R.id.details_name);
+        mProductPriceView = view.findViewById(R.id.details_price);
+
+        String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-630-d@2x.png";
+        // loading img
+        Picasso.get()
+                .load(testImgUrl)
+                .into(mProductImageView);
+
+        return view;
     }
 }

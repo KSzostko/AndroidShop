@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
                 switch(item.getItemId()) {
                     case R.id.action_home:
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this, TestActivity.class);
-                        startActivity(intent);
                         break;
                     case R.id.action_search:
                         Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();

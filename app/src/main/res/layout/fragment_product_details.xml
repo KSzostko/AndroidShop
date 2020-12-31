@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:src="@drawable/ic_action_add"
+        android:contentDescription="@string/add_to_order"
         android:layout_marginEnd="@dimen/margin_regular"
         android:text="Buy"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

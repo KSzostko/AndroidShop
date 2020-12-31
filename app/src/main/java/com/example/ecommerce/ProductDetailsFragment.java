@@ -3,6 +3,7 @@ package com.example.ecommerce;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -35,6 +37,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     private TextView mProductNameView;
     private TextView mProductPriceView;
     private Spinner mCurrencySpinner;
+    private TabAdapter mAdapter;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
     private FloatingActionButton mBuyButtonView;
 
     public ProductDetailsFragment() {
@@ -78,6 +83,16 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         mProductPriceView = view.findViewById(R.id.details_price);
         mCurrencySpinner = view.findViewById(R.id.currency_spinner);
         mBuyButtonView = view.findViewById(R.id.fab_buy);
+
+        mViewPager = view.findViewById(R.id.details_pager);
+        mTabLayout = view.findViewById(R.id.details_tabs);
+
+        mAdapter = new TabAdapter(getActivity().getSupportFragmentManager());
+        mAdapter.addFragment(new DescriptionTabFragment(), "Description");
+        mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
+
+        mViewPager.setAdapter(mAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);
 
         String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-630-d@2x.png";
         // loading img

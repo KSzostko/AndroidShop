@@ -9,6 +9,6 @@ public class SearchListActivity extends BottomNavActivity {
 
     @Override
     protected Fragment createFragment() {
-        return new ProductListFragment();
+        return ProductListFragment.newInstance(1);
     }
 }

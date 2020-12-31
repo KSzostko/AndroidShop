@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
     </LinearLayout>
-    
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/details_tabs"
         android:layout_width="match_parent"

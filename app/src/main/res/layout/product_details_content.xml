@@ -26,6 +26,7 @@
 
     <!--  TODO: here a dropdown with different currencies will be needed  -->
     <LinearLayout
+        android:id="@+id/currency_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -46,4 +47,20 @@
     </LinearLayout>
 
     <!--  TODO: here will be tab navigation with options for description and reviews  -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/details_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/currency_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/details_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/details_tabs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/details_image" />
 
-    <!--  TODO: here a dropdown with different currencies will be needed  -->
     <LinearLayout
         android:id="@+id/currency_layout"
         android:layout_width="match_parent"
@@ -45,8 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
     </LinearLayout>
-
-    <!--  TODO: here will be tab navigation with options for description and reviews  -->
+    
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/details_tabs"
         android:layout_width="match_parent"

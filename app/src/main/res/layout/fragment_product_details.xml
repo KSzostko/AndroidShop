@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- TODO: Maybe change layout -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProductDetailsFragment">
 
-    <ImageView
-        android:id="@+id/details_image"
+    <!--  TODO: Populate app bar with buttons  -->
+    <!--  without AppBar fab button does not stick to the end od the screen  -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- TODO: Remove text placeholders and add real values with intent -->
-    <TextView
-        android:id="@+id/details_name"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X" />
-
-    <!--  TODO: here a dropdown with different currencies will be needed  -->
-    <TextView
-        android:id="@+id/details_price"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="8099,00" />
+    <include layout="@layout/product_details_content" />
 
     <!-- TODO: Add Floating Action Button instead of regular Button for this   -->
-    <Button
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_buy"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:layout_marginEnd="@dimen/margin_regular"
         android:text="Buy"/>
-
-    <!--  TODO: here will be tab navigation with options for description and reviews  -->
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,7 +14,6 @@
 
     <include layout="@layout/product_details_content" />
 
-    <!-- TODO: Add Floating Action Button instead of regular Button for this   -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_buy"
         android:layout_width="wrap_content"

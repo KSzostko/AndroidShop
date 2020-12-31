@@ -25,14 +25,25 @@
         app:layout_constraintTop_toBottomOf="@id/details_image" />
 
     <!--  TODO: here a dropdown with different currencies will be needed  -->
-    <TextView
-        android:id="@+id/details_price"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="8099,00"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/details_name" />
+        app:layout_constraintTop_toBottomOf="@id/details_name">
+
+        <TextView
+            android:id="@+id/details_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="8099,00" />
+
+        <Spinner
+            android:id="@+id/currency_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
     <!--  TODO: here will be tab navigation with options for description and reviews  -->
 </androidx.constraintlayout.widget.ConstraintLayout>

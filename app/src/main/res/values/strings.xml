@@ -3,4 +3,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_to_order">Add to order</string>
+
+    <!--  Spinner  -->
+    <!--  This will probably change or will be rendered dynamically  -->
+    <string-array name="spinner_labels">
+        <item>PLN</item>
+        <item>$</item>
+        <item>€</item>
+    </string-array>
 </resources>

@@ -41,6 +41,8 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private FloatingActionButton mBuyButtonView;
+    // this will be retrieved from the db later
+    private double cost = 8099;
 
     public ProductDetailsFragment() {
         // Required empty public constructor
@@ -94,6 +96,8 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
+        mProductPriceView.setText(Double.toString(cost));
+
         String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-630-d@2x.png";
         // loading img
         Picasso.get()
@@ -120,11 +124,22 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String spinnerLabel = parent.getItemAtPosition(position).toString();
-        Toast.makeText(getContext(), spinnerLabel, Toast.LENGTH_SHORT).show();
+        String currency = parent.getItemAtPosition(position).toString();
+        Toast.makeText(getContext(), currency, Toast.LENGTH_SHORT).show();
+
+        if(currency.equals("PLN")) {
+            mProductPriceView.setText(Double.toString(cost));
+        } else {
+            convertPrice(currency);
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    private void convertPrice(String currency) {
+        String url = "https://free.currconv.com/api/v7/convert";
+
     }
 }

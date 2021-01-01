@@ -22,6 +22,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -150,7 +152,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     }
 
     private void convertPrice(String currency) {
-        String url = "https://free.currconv.com/api/v7/convert?apiKey=YOUR_API_KEY&q=PLN_" + currency + "&compact=ultra";
+        String url = "https://free.currconv.com/api/v7/convert?apiKey=API_KEY&q=PLN_" + currency + "&compact=ultra";
 
         OkHttpClient client = new OkHttpClient();
 
@@ -162,14 +164,30 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Toast.makeText(getActivity(), "Converting currency failed", Toast.LENGTH_SHORT).show();
+                // TODO: display snackbar with error message
             }
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String resp = response.body().string();
-                Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-                Log.i("ProductDetailsFragment", resp);
+
+                try {
+                    JSONObject object = new JSONObject(resp);
+                    String val = object.getString("PLN_" + currency);
+
+                    double scale = Math.pow(10, 2);
+                    double convertedPrice = Double.parseDouble(val) * cost;
+                    double roundedPrice = Math.round(convertedPrice * scale) / scale;
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProductPriceView.setText(Double.toString(roundedPrice));
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

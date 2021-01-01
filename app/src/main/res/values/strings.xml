@@ -8,7 +8,7 @@
     <!--  This will probably change or will be rendered dynamically  -->
     <string-array name="spinner_labels">
         <item>PLN</item>
-        <item>$</item>
-        <item>€</item>
+        <item>USD</item>
+        <item>EUR</item>
     </string-array>
 </resources>

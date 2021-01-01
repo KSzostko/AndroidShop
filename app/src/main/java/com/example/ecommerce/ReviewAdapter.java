@@ -3,6 +3,8 @@ package com.example.ecommerce;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,13 +40,21 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private View mView;
-        private DummyItem item;
+        private TextView mReviewDate;
+        private TextView mReviewDescription;
+        private RatingBar mRating;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
 
-            // list item views setup
+            mReviewDate = view.findViewById(R.id.review_date);
+            mReviewDescription = view.findViewById(R.id.review_description);
+            mRating = view.findViewById(R.id.review_rating);
+
+            mRating.setRating(4);
+
+            // TODO: retrieve data form the db
         }
     }
 }

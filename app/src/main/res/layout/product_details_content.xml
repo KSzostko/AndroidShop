@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:layout_margin="@dimen/margin_regular">
+    android:layout_marginTop="@dimen/margin_regular"
+    android:layout_marginBottom="@dimen/margin_regular">
 
     <ImageView
         android:id="@+id/details_image"
@@ -19,6 +20,8 @@
         android:id="@+id/details_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:layout_marginEnd="@dimen/margin_regular"
         android:text="MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +31,8 @@
         android:id="@+id/currency_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:layout_marginEnd="@dimen/margin_regular"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

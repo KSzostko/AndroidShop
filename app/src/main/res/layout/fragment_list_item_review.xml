@@ -2,10 +2,54 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="@dimen/margin_regular">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/review_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Review text" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:layout_marginEnd="@dimen/margin_regular"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/review_date"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="29.09.2020" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/review_rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/rating_margin_small"
+            android:layout_marginStart="@dimen/margin_big"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/review_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_big"
+        android:layout_marginEnd="@dimen/margin_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/review_info"
+        android:text="Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet" />
+
+    <!-- border -->
+    <FrameLayout
+        android:id="@+id/review_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_regular"
+        android:background="#EEE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/review_description"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

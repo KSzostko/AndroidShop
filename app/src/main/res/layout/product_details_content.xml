@@ -18,6 +18,7 @@
     <!-- TODO: Remove text placeholders and add real values with intent -->
     <TextView
         android:id="@+id/details_name"
+        style="@style/ProductNameBigStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_regular"
@@ -31,15 +32,18 @@
         android:id="@+id/currency_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_regular"
         android:layout_marginStart="@dimen/margin_regular"
         android:layout_marginEnd="@dimen/margin_regular"
         android:orientation="horizontal"
+        android:gravity="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/details_name">
 
         <TextView
             android:id="@+id/details_price"
+            style="@style/ProductPriceBigStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="8099,00" />
@@ -54,6 +58,7 @@
         android:id="@+id/details_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_regular"
         app:layout_constraintTop_toBottomOf="@id/currency_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

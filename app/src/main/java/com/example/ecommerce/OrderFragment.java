@@ -10,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ecommerce.dummy.DummyContent;
 
 public class OrderFragment extends Fragment {
     private TextView price;
@@ -32,6 +35,10 @@ public class OrderFragment extends Fragment {
 
         price = view.findViewById(R.id.order_sum);
         buyButton = view.findViewById(R.id.order_button);
+        orderItems = view.findViewById(R.id.order_recyclerview);
+
+        orderItems.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        orderItems.setAdapter(new OrderAdapter(DummyContent.ITEMS));
 
         return view;
     }

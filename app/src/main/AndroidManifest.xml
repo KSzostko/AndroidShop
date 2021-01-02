@@ -10,9 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Ecommerce">
-        <activity android:name=".ProductDetailsActivity"></activity>
+        android:theme="@style/Theme.Ecommerce"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".SearchListActivity" />
         <activity android:name=".BottomNavActivity" />
         <activity android:name=".MainActivity">

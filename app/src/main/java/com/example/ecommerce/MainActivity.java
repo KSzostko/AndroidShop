@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_order:
                         Toast.makeText(MainActivity.this, "Order", Toast.LENGTH_SHORT).show();
+                        intent = new Intent(MainActivity.this, OrderActivity.class);
+                        startActivity(intent);
                         break;
                 }
 

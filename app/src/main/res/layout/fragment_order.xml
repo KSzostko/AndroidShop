@@ -18,6 +18,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="150dp"
+        android:padding="@dimen/margin_small"
+        android:background="#DDD"
         app:layout_constraintTop_toBottomOf="@id/order_recyclerview"
         app:layout_constraintBottom_toBottomOf="parent">
 

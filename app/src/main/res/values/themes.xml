@@ -35,4 +35,12 @@
     <style name="ProductPriceBigStyle" parent="ProductPriceSmallStyle">
         <item name="android:textSize">@dimen/product_price_text_size_big</item>
     </style>
+
+    <style name="OrderItemPrice" parent="ProductNameSmallStyle">
+        <item name="android:textSize">@dimen/order_item_price_text_size</item>
+    </style>
+
+    <style name="OrderItemName" parent="ProductNameSmallStyle">
+        <item name="android:textSize">@dimen/order_item_name_text_size</item>
+    </style>
 </resources>

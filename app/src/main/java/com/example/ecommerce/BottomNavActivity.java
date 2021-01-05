@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -33,17 +32,15 @@ public abstract class BottomNavActivity extends AppCompatActivity {
                 Intent intent;
                 switch(item.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(BottomNavActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(BottomNavActivity.this, ProductDetailsActivity.class);
+                        intent = new Intent(BottomNavActivity.this, MainActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.action_search:
-                        Toast.makeText(BottomNavActivity.this, "Search", Toast.LENGTH_SHORT).show();
+                        // probably search list with no filters, so all elements
                         intent = new Intent(BottomNavActivity.this, SearchListActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.action_order:
-                        Toast.makeText(BottomNavActivity.this, "Order", Toast.LENGTH_SHORT).show();
                         intent = new Intent(BottomNavActivity.this, OrderActivity.class);
                         startActivity(intent);
                         break;

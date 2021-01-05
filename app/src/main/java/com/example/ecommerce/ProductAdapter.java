@@ -2,6 +2,7 @@ package com.example.ecommerce;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return mValues.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final View mView;
         public final TextView mTitleView;
         public final TextView mProductPriceView;
@@ -68,11 +69,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             Picasso.get()
                     .load(testImgUrl)
                     .into(mProductImageView);
+
+            view.setOnClickListener(this);
         }
 
         @Override
         public String toString() {
             return super.toString() + " '" + mProductPriceView.getText() + "'";
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), ProductDetailsActivity.class);
+
+            // TODO: put specific product data
+            v.getContext().startActivity(intent);
         }
     }
 }

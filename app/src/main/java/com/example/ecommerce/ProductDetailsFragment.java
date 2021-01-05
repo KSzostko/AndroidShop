@@ -103,9 +103,10 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         mTabLayout = view.findViewById(R.id.details_tabs);
 
         mAdapter = new TabAdapter(getActivity().getSupportFragmentManager());
-        // TODO: Add fragment with review form
-        mAdapter.addFragment(new DescriptionTabFragment(), "Description");
+
         mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
+        mAdapter.addFragment(new DescriptionTabFragment(), "Description");
+        mAdapter.addFragment(new WriteReviewFragment(), "Your Review");
 
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);

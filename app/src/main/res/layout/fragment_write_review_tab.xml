@@ -22,19 +22,15 @@
             android:scrollbars="vertical"/>
 
         <androidx.appcompat.widget.AppCompatRatingBar
-            style="?android:attr/ratingBarStyle"
+            style="?android:attr/ratingBarStyleSmall"
             android:id="@+id/write_review_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleX=".5"
-            android:scaleY=".5"
-            android:transformPivotX="0dp"
-            android:transformPivotY="0dp"
             app:layout_constrainedWidth="true"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="@dimen/margin_regular"
             android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="@dimen/margin_small"
             android:isIndicator="false"
             android:focusable="true"/>
 

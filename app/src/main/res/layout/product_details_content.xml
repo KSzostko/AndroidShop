@@ -28,6 +28,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/details_image" />
 
+    <androidx.appcompat.widget.AppCompatRatingBar
+        style="?android:attr/ratingBarStyleSmall"
+        android:id="@+id/details_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_name"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:layout_marginTop="@dimen/margin_small"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintHorizontal_bias="0.0" />
+
     <LinearLayout
         android:id="@+id/currency_layout"
         android:layout_width="match_parent"
@@ -39,9 +52,7 @@
         android:gravity="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/details_name">
-
-        <!--   TODO: Rating bar is missing     -->
+        app:layout_constraintTop_toBottomOf="@id/details_rating">
 
         <TextView
             android:id="@+id/details_price"

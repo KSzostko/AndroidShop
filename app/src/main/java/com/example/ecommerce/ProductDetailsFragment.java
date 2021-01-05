@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     private ImageView mProductImageView;
     private TextView mProductNameView;
     private TextView mProductPriceView;
+    private RatingBar mRatingBar;
     private Spinner mCurrencySpinner;
     private TabAdapter mAdapter;
     private TabLayout mTabLayout;
@@ -96,6 +98,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         mProductImageView = view.findViewById(R.id.details_image);
         mProductNameView = view.findViewById(R.id.details_name);
         mProductPriceView = view.findViewById(R.id.details_price);
+        mRatingBar = view.findViewById(R.id.details_rating);
         mCurrencySpinner = view.findViewById(R.id.currency_spinner);
         mBuyButtonView = view.findViewById(R.id.fab_buy);
 
@@ -110,6 +113,8 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
 
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+
+        mRatingBar.setRating(3);
 
         mProductPriceView.setText(Double.toString(cost));
 

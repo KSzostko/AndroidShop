@@ -41,6 +41,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/details_name">
 
+        <!--   TODO: Rating bar is missing     -->
+
         <TextView
             android:id="@+id/details_price"
             style="@style/ProductPriceBigStyle"

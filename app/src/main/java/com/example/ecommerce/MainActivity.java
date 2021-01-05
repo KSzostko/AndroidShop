@@ -1,47 +1,11 @@
 package com.example.ecommerce;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BottomNavActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Intent intent;
-                switch(item.getItemId()) {
-                    case R.id.action_home:
-                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this, ProductDetailsActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.action_search:
-                        Toast.makeText(MainActivity.this, "Search", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this, SearchListActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.action_order:
-                        Toast.makeText(MainActivity.this, "Order", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this, OrderActivity.class);
-                        startActivity(intent);
-                        break;
-                }
-
-                return true;
-            }
-        });
+    protected Fragment createFragment() {
+        return new MainFragment();
     }
 }

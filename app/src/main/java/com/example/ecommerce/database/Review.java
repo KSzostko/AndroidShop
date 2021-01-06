@@ -18,13 +18,13 @@ public class Review {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int productId;
-    private int score;
+    private float score;
     private String reviewText;
     // @TODO: image probably needs to be stored in some specific way in the db
     //private File image;
     private String date;
 
-    public Review(int productId, int score, String reviewText, String date) {
+    public Review(int productId, float score, String reviewText, String date) {
         this.productId = productId;
         this.score = score;
         this.reviewText = reviewText;
@@ -47,11 +47,11 @@ public class Review {
         this.productId = productId;
     }
 
-    public int getScore() {
+    public float getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(float score) {
         this.score = score;
     }
 

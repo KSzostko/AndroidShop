@@ -28,7 +28,7 @@ public interface ProductDao {
     LiveData<List<Product>> findAll();
 
     @Query("SELECT  * FROM product WHERE name LIKE :name")
-    LiveData<List<Product>> findProductWithName(String name);
+    LiveData<List<Product>> findProductsWithName(String name);
 
     // @TODO: Filter by more parameters
 }

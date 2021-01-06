@@ -39,9 +39,10 @@ public class ShopRepository {
         return products;
     }
 
-    // @TODO: How to filter LiveData list?
-//    public LiveData<List<Product>> findProductsWithName(String name) {
-//    }
+    // TODO: Check if this way is correct
+    public LiveData<List<Product>> findProductsWithName(String name) {
+        return productDao.findProductsWithName(name);
+    }
 
     public void insertProduct(Product product) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
@@ -65,6 +66,14 @@ public class ShopRepository {
         return reviews;
     }
 
+    public LiveData<List<Review>> findReviewsForProduct(int productId) {
+        return reviewDao.findReviewsForProduct(productId);
+    }
+
+    public LiveData<List<Review>> findReviewsWithScore(float score) {
+        return reviewDao.findReviewsWithScore(score);
+    }
+
     public void insertReview(Review review) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             reviewDao.insert(review);
@@ -83,10 +92,16 @@ public class ShopRepository {
         });
     }
 
-    // @TODO: filter list by score and product
-
     public LiveData<List<OrderItem>> findAllOrderItems() {
         return orderItems;
+    }
+
+    public LiveData<List<OrderItem>> findOrderItemsFroProduct(int productId) {
+        return orderItemDao.findOrderItemsForProduct(productId);
+    }
+
+    public LiveData<List<OrderItem>> findItemsForOrder(int orderId) {
+        return orderItemDao.findItemsForOrder(orderId);
     }
 
     public void insertOrderItem(OrderItem item) {
@@ -107,10 +122,12 @@ public class ShopRepository {
         });
     }
 
-    // @TODO: filter list by product and order
-
     public LiveData<List<Order>> findAllOrders() {
         return orders;
+    }
+
+    public LiveData<List<Order>> findOrdersWithStatus(String status) {
+        return orderDao.findOrdersWithStatus(status);
     }
 
     public void insertOrder(Order order) {
@@ -130,6 +147,4 @@ public class ShopRepository {
             orderDao.delete(order);
         });
     }
-
-    // @TODO: filter list by status
 }

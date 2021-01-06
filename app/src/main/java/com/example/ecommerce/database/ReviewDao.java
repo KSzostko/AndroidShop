@@ -28,5 +28,5 @@ public interface ReviewDao {
     LiveData<List<Review>> findReviewsForProduct(int productId);
 
     @Query("SELECT * FROM review WHERE score=:score")
-    LiveData<List<Review>> findReviewsWithScore(int score);
+    LiveData<List<Review>> findReviewsWithScore(float score);
 }

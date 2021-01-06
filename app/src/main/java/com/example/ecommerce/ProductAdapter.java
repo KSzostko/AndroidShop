@@ -1,8 +1,10 @@
 package com.example.ecommerce;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +12,11 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.ecommerce.database.Product;
 import com.example.ecommerce.dummy.DummyContent.DummyItem;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,12 +24,7 @@ import java.util.List;
  * TODO: Replace the implementation with code for your data type.
  */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-
-    private final List<DummyItem> mValues;
-
-    public ProductAdapter(List<DummyItem> items) {
-        mValues = items;
-    }
+    private List<Product> mProducts;
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -35,15 +34,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mTitleView.setText(mValues.get(position).id);
-        holder.mProductPriceView.setText(mValues.get(position).content);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.i("ProductAdapter", "onBindViewHolder");
+        if(mProducts != null) {
+            Product product = mProducts.get(position);
+            holder.bind(product);
+        } else {
+            Log.i("ProductAdapter", "No products available");
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        if(mProducts == null) return 0;
+
+        return mProducts.size();
+    }
+
+    public void setProducts(List<Product> products) {
+        mProducts = products;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -52,7 +62,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public final TextView mProductPriceView;
         public final RatingBar mProductRatingView;
         public final ImageView mProductImageView;
-        public DummyItem mItem;
+        public Product product;
 
         public ViewHolder(View view) {
             super(view);
@@ -61,14 +71,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             mTitleView = (TextView) view.findViewById(R.id.product_title);
             mProductPriceView = (TextView) view.findViewById(R.id.product_price);
             mProductRatingView = (RatingBar) view.findViewById(R.id.product_rating);
-            mProductRatingView.setRating(3.5f);
-
             mProductImageView = (ImageView) view.findViewById(R.id.product_image);
-            String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-300-t.png";
-            // loading img
-            Picasso.get()
-                    .load(testImgUrl)
-                    .into(mProductImageView);
 
             view.setOnClickListener(this);
         }
@@ -84,6 +87,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
             // TODO: put specific product data
             v.getContext().startActivity(intent);
+        }
+
+        public void bind(Product product) {
+            this.product = product;
+            Log.i("ViewHolder bind", product.getName());
+
+            mTitleView.setText(product.getName());
+            mProductPriceView.setText(String.valueOf(product.getPrice()));
+            // TODO: Calculate product rating
+            mProductRatingView.setRating(3.5f);
+
+            Picasso.get()
+                    .load(product.getImage())
+                    .resize(300, 200)
+                    .into(mProductImageView);
         }
     }
 }

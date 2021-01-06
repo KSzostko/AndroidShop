@@ -4,15 +4,24 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ecommerce.database.Product;
+import com.example.ecommerce.database.ShopViewModel;
 import com.example.ecommerce.dummy.DummyContent;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -23,6 +32,8 @@ public class ProductListFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+
+    private ShopViewModel shopViewModel;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -55,6 +66,8 @@ public class ProductListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
+        ProductAdapter adapter = new ProductAdapter();
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -65,8 +78,18 @@ public class ProductListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new ProductAdapter(DummyContent.ITEMS));
+            recyclerView.setAdapter(adapter);
         }
+
+        shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
+        // findAll will be later replaced with findProductsWithName method
+        shopViewModel.findAllProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
+            @Override
+            public void onChanged(List<Product> products) {
+                adapter.setProducts(products);
+            }
+        });
+
         return view;
     }
 }

@@ -39,7 +39,7 @@ public abstract class ShopDatabase extends RoomDatabase {
                                 " gamers have come to recognize and trust. " + "Now you too can enjoy all your favorite games with a powerful graphics card " +
                                 "that stays cool and silent. Just the way you like it.");
                 Product product2 = new Product("Huawei Matebook X Pro", 6999.00,
-                        "https://www.nowanet.sklep.pl/wp-content/uploads/2019/05/Huawei-MateBook-X-Pro-Laptop-Intel-Core-i5-8250U-8GB-256GB-Gray-667502-.jpg",
+                        "https://image.ceneostatic.pl/data/products/93456841/i-huawei-matebook-x-pro-2020-13-9-i7-16gb-1tb-win10-53011agg.jpg",
                         "With an industry-leading processor and 3K FullView Display, HUAWEI MateBook X Pro takes your experience beyond the extraordinary. ");
 
                 dao.insert(product1);

@@ -22,6 +22,7 @@ import com.example.ecommerce.dummy.DummyContent;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A fragment representing a list of Items.
@@ -67,8 +68,8 @@ public class ProductListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
-        String searchedText = getActivity().getIntent().getStringExtra(BottomNavActivity.SEARCHED_TEXT);
-        
+        String searchedText = Objects.requireNonNull(getActivity()).getIntent().getStringExtra(BottomNavActivity.SEARCHED_TEXT);
+
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             // TODO: Add swipe functionality

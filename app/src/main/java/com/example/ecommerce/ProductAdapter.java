@@ -24,6 +24,8 @@ import java.util.List;
  * TODO: Replace the implementation with code for your data type.
  */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+    public static final String PRODUCT_ID = "com.example.ecommerce.PRODUCT_ID";
+
     private List<Product> mProducts;
 
     @Override
@@ -83,6 +85,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), ProductDetailsActivity.class);
+            intent.putExtra(PRODUCT_ID, product.getId());
 
             // TODO: put specific product data
             v.getContext().startActivity(intent);

@@ -3,6 +3,8 @@ package com.example.ecommerce;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
@@ -18,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ecommerce.database.Product;
+import com.example.ecommerce.database.ShopViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
@@ -27,6 +31,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -47,6 +53,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
+    private ShopViewModel shopViewModel;
+    private Product mProduct;
+
     private ImageView mProductImageView;
     private TextView mProductNameView;
     private TextView mProductPriceView;
@@ -95,6 +104,8 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
 
+        int productId = Objects.requireNonNull(getActivity()).getIntent().getIntExtra(ProductAdapter.PRODUCT_ID, -1);
+
         mProductImageView = view.findViewById(R.id.details_image);
         mProductNameView = view.findViewById(R.id.details_name);
         mProductPriceView = view.findViewById(R.id.details_price);
@@ -114,15 +125,31 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        mRatingBar.setRating(3);
+//        mRatingBar.setRating(3);
+//
+//        mProductPriceView.setText(Double.toString(mProduct.getPrice()));
+//
+//        Picasso.get()
+//                .load(mProduct.getImage())
+//                .into(mProductImageView);
 
-        mProductPriceView.setText(Double.toString(cost));
+        shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
+        shopViewModel.findProduct(productId).observe(getViewLifecycleOwner(), new Observer<Product>() {
+            @Override
+            public void onChanged(Product product) {
+                Log.i("ProductDetailsFragment", "siema");
+                mProduct = product;
 
-        String testImgUrl = "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-630-d@2x.png";
-        // loading img
-        Picasso.get()
-                .load(testImgUrl)
-                .into(mProductImageView);
+                mProductNameView.setText(mProduct.getName());
+                mRatingBar.setRating(3);
+
+                mProductPriceView.setText(Double.toString(mProduct.getPrice()));
+
+                Picasso.get()
+                        .load(mProduct.getImage())
+                        .into(mProductImageView);
+            }
+        });
 
         // spinner setup
         if(mCurrencySpinner != null) {
@@ -148,7 +175,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         Toast.makeText(getContext(), currency, Toast.LENGTH_SHORT).show();
 
         if(currency.equals("PLN")) {
-            mProductPriceView.setText(Double.toString(cost));
+            mProductPriceView.setText(Double.toString(mProduct.getPrice()));
         } else {
             convertPrice(currency);
         }

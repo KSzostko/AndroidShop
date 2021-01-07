@@ -68,8 +68,7 @@ public class ProductListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
         String searchedText = getActivity().getIntent().getStringExtra(BottomNavActivity.SEARCHED_TEXT);
-
-        // Set the adapter
+        
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             // TODO: Add swipe functionality
@@ -83,7 +82,6 @@ public class ProductListFragment extends Fragment {
         }
 
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
-        // findAll will be later replaced with findProductsWithName method
         shopViewModel.findProductsWithName(searchedText).observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {

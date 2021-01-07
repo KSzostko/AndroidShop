@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Objects;
 
 public abstract class BottomNavActivity extends AppCompatActivity {
+    public static final String SEARCHED_TEXT = "com.example.ecommerce.SEARCHED_TEXT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +38,8 @@ public abstract class BottomNavActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.action_search:
-                        // probably search list with no filters, so all elements
                         intent = new Intent(BottomNavActivity.this, SearchListActivity.class);
+                        intent.putExtra(SEARCHED_TEXT, "");
                         startActivity(intent);
                         break;
                     case R.id.action_order:
@@ -71,7 +73,10 @@ public abstract class BottomNavActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // intent to SearchListActivity
+                Intent intent = new Intent(BottomNavActivity.this, SearchListActivity.class);
+                intent.putExtra(SEARCHED_TEXT, query);
+                startActivity(intent);
+
                 return true;
             }
 

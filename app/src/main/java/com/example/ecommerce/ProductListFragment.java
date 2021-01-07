@@ -34,6 +34,7 @@ public class ProductListFragment extends Fragment {
     private int mColumnCount = 1;
 
     private ShopViewModel shopViewModel;
+    private ProductAdapter adapter = new ProductAdapter();
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -66,7 +67,7 @@ public class ProductListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
-        ProductAdapter adapter = new ProductAdapter();
+        String searchedText = getActivity().getIntent().getStringExtra(BottomNavActivity.SEARCHED_TEXT);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -83,7 +84,7 @@ public class ProductListFragment extends Fragment {
 
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
         // findAll will be later replaced with findProductsWithName method
-        shopViewModel.findAllProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
+        shopViewModel.findProductsWithName(searchedText).observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
                 adapter.setProducts(products);

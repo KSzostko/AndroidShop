@@ -39,6 +39,10 @@ public class ShopRepository {
         return products;
     }
 
+    public LiveData<Product> findProduct(int id) {
+        return productDao.findProduct(id);
+    }
+
     // TODO: Check if this way is correct
     public LiveData<List<Product>> findProductsWithName(String name) {
         return productDao.findProductsWithName(name);
@@ -72,6 +76,10 @@ public class ShopRepository {
 
     public LiveData<List<Review>> findReviewsWithScore(float score) {
         return reviewDao.findReviewsWithScore(score);
+    }
+
+    public LiveData<Float> findProductScore(int productId) {
+        return reviewDao.findProductScore(productId);
     }
 
     public void insertReview(Review review) {

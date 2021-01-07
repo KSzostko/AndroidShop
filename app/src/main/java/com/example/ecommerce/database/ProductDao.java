@@ -27,6 +27,9 @@ public interface ProductDao {
     @Query("SELECT * FROM product ORDER BY name")
     LiveData<List<Product>> findAll();
 
+    @Query("SELECT * FROM product WHERE id=:id")
+    LiveData<Product> findProduct(int id);
+
     @Query("SELECT * FROM product WHERE name LIKE '%' || :name || '%'")
     LiveData<List<Product>> findProductsWithName(String name);
 }

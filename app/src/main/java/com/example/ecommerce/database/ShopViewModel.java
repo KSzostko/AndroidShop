@@ -31,6 +31,10 @@ public class ShopViewModel extends AndroidViewModel {
         return products;
     }
 
+    public LiveData<Product> findProduct(int id) {
+        return shopRepository.findProduct(id);
+    }
+
     public LiveData<List<Product>> findProductsWithName(String name) {
         return shopRepository.findProductsWithName(name);
     }
@@ -57,6 +61,10 @@ public class ShopViewModel extends AndroidViewModel {
 
     public LiveData<List<Review>> findReviewsWithScore(float score) {
         return shopRepository.findReviewsWithScore(score);
+    }
+
+    public LiveData<Float> findProductScore(int productId) {
+        return shopRepository.findProductScore(productId);
     }
 
     public void insertReview(Review review) {

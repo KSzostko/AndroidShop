@@ -29,4 +29,7 @@ public interface ReviewDao {
 
     @Query("SELECT * FROM review WHERE score=:score")
     LiveData<List<Review>> findReviewsWithScore(float score);
+
+    @Query("SELECT AVG(score) FROM review WHERE productId=:productId")
+    LiveData<Float> findProductScore(int productId);
 }

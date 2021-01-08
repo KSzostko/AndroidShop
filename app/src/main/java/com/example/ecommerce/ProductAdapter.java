@@ -1,6 +1,10 @@
 package com.example.ecommerce;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -13,6 +17,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.ecommerce.database.Product;
+import com.example.ecommerce.database.ShopViewModel;
 import com.example.ecommerce.dummy.DummyContent.DummyItem;
 import com.squareup.picasso.Picasso;
 
@@ -39,7 +44,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(mProducts != null) {
             Product product = mProducts.get(position);
-            holder.bind(product);
+
+            ShopViewModel shopViewModel = new ViewModelProvider((ViewModelStoreOwner) holder.itemView.getContext()).get(ShopViewModel.class);
+            shopViewModel.findProductScore(product.getId()).observe((LifecycleOwner) holder.itemView.getContext(), new Observer<Float>() {
+                @Override
+                public void onChanged(Float aFloat) {
+                    if(aFloat == null) holder.bind(product, 0);
+                    else holder.bind(product, aFloat);
+                }
+            });
         } else {
             Log.i("ProductAdapter", "No products available");
         }
@@ -87,17 +100,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             Intent intent = new Intent(v.getContext(), ProductDetailsActivity.class);
             intent.putExtra(PRODUCT_ID, product.getId());
 
-            // TODO: put specific product data
             v.getContext().startActivity(intent);
         }
 
-        public void bind(Product product) {
+        public void bind(Product product, float score) {
             this.product = product;
 
             mTitleView.setText(product.getName());
             mProductPriceView.setText(String.valueOf(product.getPrice()));
-            // TODO: Calculate product rating
-            mProductRatingView.setRating(3.5f);
+
+            mProductRatingView.setRating(score);
 
             Picasso.get()
                     .load(product.getImage())

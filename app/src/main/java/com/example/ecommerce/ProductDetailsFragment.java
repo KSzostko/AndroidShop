@@ -122,7 +122,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         getProductData();
 
         getScore();
-        
+
         if(mCurrencySpinner != null) {
             mCurrencySpinner.setOnItemSelectedListener(this);
         }

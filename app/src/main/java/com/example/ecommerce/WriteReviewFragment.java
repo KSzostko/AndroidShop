@@ -73,6 +73,7 @@ public class WriteReviewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Date date = new Date();
+                // TODO: Date displays incorrectly
                 DateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
                 Review review = new Review(productId, currRating, descriptionText, dateFormat.format(date));
 

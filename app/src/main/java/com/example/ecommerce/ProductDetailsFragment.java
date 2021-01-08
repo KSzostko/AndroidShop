@@ -211,7 +211,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                         .load(mProduct.getImage())
                         .into(mProductImageView);
 
-                mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
+                mAdapter.addFragment(new ReviewsTabFragment(productId), "Reviews");
                 mAdapter.addFragment(new DescriptionTabFragment(mProduct.getDescription()), "Description");
                 mAdapter.addFragment(new WriteReviewFragment(productId), "Your Review");
 

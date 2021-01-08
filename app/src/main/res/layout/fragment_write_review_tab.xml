@@ -37,6 +37,7 @@
         <!--  TODO: add filed for posting and making photo  -->
 
         <Button
+            android:id="@+id/write_review_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_regular"

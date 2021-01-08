@@ -213,7 +213,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
 
                 mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
                 mAdapter.addFragment(new DescriptionTabFragment(mProduct.getDescription()), "Description");
-                mAdapter.addFragment(new WriteReviewFragment(), "Your Review");
+                mAdapter.addFragment(new WriteReviewFragment(productId), "Your Review");
 
                 mViewPager.setAdapter(mAdapter);
                 mTabLayout.setupWithViewPager(mViewPager);

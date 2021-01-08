@@ -55,6 +55,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     // TODO: Rename and change types of parameters
     private ShopViewModel shopViewModel;
     private Product mProduct;
+    private int productId;
 
     private ImageView mProductImageView;
     private TextView mProductNameView;
@@ -102,7 +103,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
 
-        int productId = Objects.requireNonNull(getActivity()).getIntent().getIntExtra(ProductAdapter.PRODUCT_ID, -1);
+        productId = Objects.requireNonNull(getActivity()).getIntent().getIntExtra(ProductAdapter.PRODUCT_ID, -1);
 
         mProductImageView = view.findViewById(R.id.details_image);
         mProductNameView = view.findViewById(R.id.details_name);
@@ -117,30 +118,11 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         mAdapter = new TabAdapter(getActivity().getSupportFragmentManager());
 
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
-        shopViewModel.findProduct(productId).observe(getViewLifecycleOwner(), new Observer<Product>() {
-            @Override
-            public void onChanged(Product product) {
-                mProduct = product;
 
-                mProductNameView.setText(mProduct.getName());
-                mRatingBar.setRating(3);
+        getProductData();
 
-                mProductPriceView.setText(Double.toString(mProduct.getPrice()));
-
-                Picasso.get()
-                        .load(mProduct.getImage())
-                        .into(mProductImageView);
-
-                mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
-                mAdapter.addFragment(new DescriptionTabFragment(mProduct.getDescription()), "Description");
-                mAdapter.addFragment(new WriteReviewFragment(), "Your Review");
-
-                mViewPager.setAdapter(mAdapter);
-                mTabLayout.setupWithViewPager(mViewPager);
-            }
-        });
-
-        // spinner setup
+        getScore();
+        
         if(mCurrencySpinner != null) {
             mCurrencySpinner.setOnItemSelectedListener(this);
         }
@@ -211,6 +193,40 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+    }
+
+    private void getProductData() {
+        shopViewModel.findProduct(productId).observe(getViewLifecycleOwner(), new Observer<Product>() {
+            @Override
+            public void onChanged(Product product) {
+                mProduct = product;
+
+                mProductNameView.setText(mProduct.getName());
+
+                mProductPriceView.setText(Double.toString(mProduct.getPrice()));
+
+                Picasso.get()
+                        .load(mProduct.getImage())
+                        .into(mProductImageView);
+
+                mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
+                mAdapter.addFragment(new DescriptionTabFragment(mProduct.getDescription()), "Description");
+                mAdapter.addFragment(new WriteReviewFragment(), "Your Review");
+
+                mViewPager.setAdapter(mAdapter);
+                mTabLayout.setupWithViewPager(mViewPager);
+            }
+        });
+    }
+
+    private void getScore() {
+        shopViewModel.findProductScore(productId).observe(getViewLifecycleOwner(), new Observer<Float>() {
+            @Override
+            public void onChanged(Float aFloat) {
+                if(aFloat == null) mRatingBar.setRating(0);
+                else mRatingBar.setRating(aFloat);
             }
         });
     }

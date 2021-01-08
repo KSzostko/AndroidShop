@@ -65,8 +65,6 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private FloatingActionButton mBuyButtonView;
-    // this will be retrieved from the db later
-    private double cost = 8099;
 
     public ProductDetailsFragment() {
         // Required empty public constructor
@@ -118,26 +116,10 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
 
         mAdapter = new TabAdapter(getActivity().getSupportFragmentManager());
 
-        mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
-        mAdapter.addFragment(new DescriptionTabFragment(), "Description");
-        mAdapter.addFragment(new WriteReviewFragment(), "Your Review");
-
-        mViewPager.setAdapter(mAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
-
-//        mRatingBar.setRating(3);
-//
-//        mProductPriceView.setText(Double.toString(mProduct.getPrice()));
-//
-//        Picasso.get()
-//                .load(mProduct.getImage())
-//                .into(mProductImageView);
-
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
         shopViewModel.findProduct(productId).observe(getViewLifecycleOwner(), new Observer<Product>() {
             @Override
             public void onChanged(Product product) {
-                Log.i("ProductDetailsFragment", "siema");
                 mProduct = product;
 
                 mProductNameView.setText(mProduct.getName());
@@ -148,6 +130,13 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                 Picasso.get()
                         .load(mProduct.getImage())
                         .into(mProductImageView);
+
+                mAdapter.addFragment(new ReviewsTabFragment(), "Reviews");
+                mAdapter.addFragment(new DescriptionTabFragment(mProduct.getDescription()), "Description");
+                mAdapter.addFragment(new WriteReviewFragment(), "Your Review");
+
+                mViewPager.setAdapter(mAdapter);
+                mTabLayout.setupWithViewPager(mViewPager);
             }
         });
 
@@ -210,7 +199,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                     String val = object.getString("PLN_" + currency);
 
                     double scale = Math.pow(10, 2);
-                    double convertedPrice = Double.parseDouble(val) * cost;
+                    double convertedPrice = Double.parseDouble(val) * mProduct.getPrice();
                     double roundedPrice = Math.round(convertedPrice * scale) / scale;
 
                     getActivity().runOnUiThread(new Runnable() {

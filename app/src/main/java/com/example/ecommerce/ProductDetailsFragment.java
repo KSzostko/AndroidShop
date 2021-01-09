@@ -149,6 +149,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
 
                 int orderId = preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1);
                 if(orderId == -1) {
+                    Log.i("ProductDetailsFragment", "Creating new order");
                     Order order = new Order("pending");
                     shopViewModel.insertOrder(order);
 
@@ -160,6 +161,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                     prefEditor.apply();
                 } else {
                     // append existing order
+                    Log.i("ProductDetailsFragment", String.valueOf(preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1)));
                 }
             }
         });

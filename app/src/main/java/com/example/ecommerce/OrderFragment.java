@@ -1,11 +1,15 @@
 package com.example.ecommerce;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,12 +37,26 @@ public class OrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
+        SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
+        int orderId = preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1);
+
         price = view.findViewById(R.id.order_sum);
         buyButton = view.findViewById(R.id.order_button);
         orderItems = view.findViewById(R.id.order_recyclerview);
 
         orderItems.setLayoutManager(new LinearLayoutManager(view.getContext()));
         orderItems.setAdapter(new OrderAdapter(DummyContent.ITEMS));
+
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Order realised! Thank you for your time.", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt(BottomNavActivity.CURRENT_ORDER, -1);
+                editor.apply();
+            }
+        });
 
         return view;
     }

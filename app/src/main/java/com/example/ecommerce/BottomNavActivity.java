@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,8 @@ import java.util.Objects;
 
 public abstract class BottomNavActivity extends AppCompatActivity {
     public static final String SEARCHED_TEXT = "com.example.ecommerce.SEARCHED_TEXT";
+    public static final String PREFERENCE_ORDER = "OrderPref";
+    public static final String CURRENT_ORDER = "CURRENT_ORDER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

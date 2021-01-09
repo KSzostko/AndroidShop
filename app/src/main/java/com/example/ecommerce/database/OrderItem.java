@@ -24,8 +24,9 @@ public class OrderItem {
     private int orderId;
     private int quantity;
 
-    public OrderItem(int productId, int quantity) {
+    public OrderItem(int productId, int orderId, int quantity) {
         this.productId = productId;
+        this.orderId = orderId;
         this.quantity = quantity;
     }
 

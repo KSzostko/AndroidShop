@@ -1,5 +1,7 @@
 package com.example.ecommerce;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +22,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ecommerce.database.Order;
+import com.example.ecommerce.database.OrderItem;
 import com.example.ecommerce.database.Product;
 import com.example.ecommerce.database.ShopViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -140,6 +144,23 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
             public void onClick(View v) {
                 Toast.makeText(getContext(), "This will put product on your list", Toast.LENGTH_SHORT).show();
                 // TODO: create new order item
+
+                SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
+
+                int orderId = preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1);
+                if(orderId == -1) {
+                    Order order = new Order("pending");
+                    shopViewModel.insertOrder(order);
+
+                    OrderItem item = new OrderItem(productId, order.getId(), 1);
+                    shopViewModel.insertOrderItem(item);
+
+                    SharedPreferences.Editor prefEditor = preferences.edit();
+                    prefEditor.putInt(BottomNavActivity.CURRENT_ORDER, order.getId());
+                    prefEditor.apply();
+                } else {
+                    // append existing order
+                }
             }
         });
 

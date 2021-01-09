@@ -72,6 +72,10 @@ public class OrderFragment extends Fragment {
             shopViewModel.findItemsForOrder(orderId).observe(getViewLifecycleOwner(), new Observer<List<OrderItem>>() {
                 @Override
                 public void onChanged(List<OrderItem> orderItems) {
+                    Log.i("OrderFragment", "there is already some order!");
+                    for(OrderItem item : orderItems) {
+                        Log.i("OrderFragment", String.valueOf(item.getId()));
+                    }
                     adapter.setItems(orderItems);
                 }
             });

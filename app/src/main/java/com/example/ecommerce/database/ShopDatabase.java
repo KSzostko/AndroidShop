@@ -23,11 +23,11 @@ public abstract class ShopDatabase extends RoomDatabase {
     public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     // prepopulating db with products
-//    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
-//        @Override
-//        public void onOpen(@NonNull SupportSQLiteDatabase db) {
-//            super.onOpen(db);
-//            databaseWriteExecutor.execute(() -> {
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+            super.onOpen(db);
+            databaseWriteExecutor.execute(() -> {
 //                ProductDao dao = INSTANCE.productDao();
 //                // deleteAll probably should be removed later
 //                dao.deleteAll();
@@ -44,9 +44,15 @@ public abstract class ShopDatabase extends RoomDatabase {
 //
 //                dao.insert(product1);
 //                dao.insert(product2);
-//            });
-//        }
-//    };
+
+                OrderItemDao orderItemDao = INSTANCE.orderItemDao();
+                OrderDao orderDao = INSTANCE.orderDao();
+
+                orderItemDao.deleteAll();
+                orderDao.deleteAll();
+            });
+        }
+    };
 
     public static ShopDatabase getDatabase(final Context context) {
         if(INSTANCE == null) {

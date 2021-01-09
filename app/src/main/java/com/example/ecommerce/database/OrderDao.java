@@ -21,6 +21,9 @@ public interface OrderDao {
     @Delete
     void delete(Order order);
 
+    @Query("DELETE FROM `order`")
+    void deleteAll();
+
     @Query("SELECT * FROM `order`")
     LiveData<List<Order>> findAll();
 

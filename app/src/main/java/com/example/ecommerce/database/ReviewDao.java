@@ -24,7 +24,7 @@ public interface ReviewDao {
     @Query("SELECT * FROM review")
     LiveData<List<Review>> findAll();
 
-    @Query("SELECT * FROM review WHERE productId=:productId")
+    @Query("SELECT * FROM review WHERE productId=:productId ORDER BY score DESC")
     LiveData<List<Review>> findReviewsForProduct(int productId);
 
     @Query("SELECT * FROM review WHERE score=:score")

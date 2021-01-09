@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ProductDetailsFragment">
 
-    <!--  TODO: Populate app bar with buttons  -->
     <!--  without AppBar fab button does not stick to the end od the screen  -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!--  TODO: list does no stick to the top  -->
     <include layout="@layout/product_details_content" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

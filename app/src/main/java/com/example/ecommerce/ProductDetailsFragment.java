@@ -135,7 +135,13 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
             mCurrencySpinner.setAdapter(adapter);
         }
 
-        // TODO: add fab button listener
+        mBuyButtonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "This will put product on your list", Toast.LENGTH_SHORT).show();
+                // TODO: create new order item
+            }
+        });
 
         return view;
     }

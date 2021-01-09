@@ -60,7 +60,7 @@
                 android:textSize="30sp" />
 
             <EditText
-                android:id="@+id/editTextNumberSigned2"
+                android:id="@+id/orderitem_quantity"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"

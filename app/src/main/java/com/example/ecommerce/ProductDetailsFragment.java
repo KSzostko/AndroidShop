@@ -146,6 +146,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                 // TODO: create new order item
 
                 SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
+                Log.i("ProductDetailsFragment", "siema");
 
                 int orderId = preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1);
                 if(orderId == -1) {

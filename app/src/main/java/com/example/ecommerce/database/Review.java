@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.File;
 import java.util.Date;
+import java.util.UUID;
 
 import static androidx.room.ForeignKey.CASCADE;
 
@@ -15,35 +16,36 @@ import static androidx.room.ForeignKey.CASCADE;
                                   childColumns = "productId",
                                   onDelete = CASCADE))
 public class Review {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-    private int productId;
+    @PrimaryKey
+    private String id;
+    private String productId;
     private float score;
     private String reviewText;
     // @TODO: image probably needs to be stored in some specific way in the db
     //private File image;
     private String date;
 
-    public Review(int productId, float score, String reviewText, String date) {
+    public Review(String productId, float score, String reviewText, String date) {
+        this.id = UUID.randomUUID().toString();
         this.productId = productId;
         this.score = score;
         this.reviewText = reviewText;
         this.date = date;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 

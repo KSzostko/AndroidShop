@@ -28,8 +28,8 @@ public interface OrderItemDao {
     LiveData<List<OrderItem>> findAll();
 
     @Query("SELECT * FROM orderItem WHERE productId=:productId")
-    LiveData<List<OrderItem>> findOrderItemsForProduct(int productId);
+    LiveData<List<OrderItem>> findOrderItemsForProduct(String productId);
 
     @Query("SELECT * FROM orderItem WHERE orderId=:orderId")
-    LiveData<List<OrderItem>> findItemsForOrder(int orderId);
+    LiveData<List<OrderItem>> findItemsForOrder(String orderId);
 }

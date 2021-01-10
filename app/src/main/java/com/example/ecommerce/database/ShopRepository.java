@@ -39,11 +39,10 @@ public class ShopRepository {
         return products;
     }
 
-    public LiveData<Product> findProduct(int id) {
+    public LiveData<Product> findProduct(String id) {
         return productDao.findProduct(id);
     }
 
-    // TODO: Check if this way is correct
     public LiveData<List<Product>> findProductsWithName(String name) {
         return productDao.findProductsWithName(name);
     }
@@ -70,7 +69,7 @@ public class ShopRepository {
         return reviews;
     }
 
-    public LiveData<List<Review>> findReviewsForProduct(int productId) {
+    public LiveData<List<Review>> findReviewsForProduct(String productId) {
         return reviewDao.findReviewsForProduct(productId);
     }
 
@@ -78,7 +77,7 @@ public class ShopRepository {
         return reviewDao.findReviewsWithScore(score);
     }
 
-    public LiveData<Float> findProductScore(int productId) {
+    public LiveData<Float> findProductScore(String productId) {
         return reviewDao.findProductScore(productId);
     }
 
@@ -104,11 +103,11 @@ public class ShopRepository {
         return orderItems;
     }
 
-    public LiveData<List<OrderItem>> findOrderItemsFroProduct(int productId) {
+    public LiveData<List<OrderItem>> findOrderItemsFroProduct(String productId) {
         return orderItemDao.findOrderItemsForProduct(productId);
     }
 
-    public LiveData<List<OrderItem>> findItemsForOrder(int orderId) {
+    public LiveData<List<OrderItem>> findItemsForOrder(String orderId) {
         return orderItemDao.findItemsForOrder(orderId);
     }
 

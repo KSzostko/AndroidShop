@@ -3,10 +3,12 @@ package com.example.ecommerce.database;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.UUID;
+
 @Entity(tableName = "product")
 public class Product {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey
+    private String id;
     private String name;
     private double price;
     private String image;
@@ -14,17 +16,18 @@ public class Product {
 
 
     public Product(String name, double price, String image, String description) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.price = price;
         this.image = image;
         this.description = description;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

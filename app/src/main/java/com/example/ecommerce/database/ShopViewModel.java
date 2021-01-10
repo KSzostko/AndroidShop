@@ -25,13 +25,11 @@ public class ShopViewModel extends AndroidViewModel {
         orders = shopRepository.findAllOrders();
     }
 
-    // @TODO: Check if this way is correct
-
     public LiveData<List<Product>> findAllProducts() {
         return products;
     }
 
-    public LiveData<Product> findProduct(int id) {
+    public LiveData<Product> findProduct(String id) {
         return shopRepository.findProduct(id);
     }
 
@@ -55,7 +53,7 @@ public class ShopViewModel extends AndroidViewModel {
         return reviews;
     }
 
-    public LiveData<List<Review>> findReviewsForProduct(int productId) {
+    public LiveData<List<Review>> findReviewsForProduct(String productId) {
         return shopRepository.findReviewsForProduct(productId);
     }
 
@@ -63,7 +61,7 @@ public class ShopViewModel extends AndroidViewModel {
         return shopRepository.findReviewsWithScore(score);
     }
 
-    public LiveData<Float> findProductScore(int productId) {
+    public LiveData<Float> findProductScore(String productId) {
         return shopRepository.findProductScore(productId);
     }
 
@@ -83,11 +81,11 @@ public class ShopViewModel extends AndroidViewModel {
         return orderItems;
     }
 
-    public LiveData<List<OrderItem>> findOrderItemsFroProduct(int productId) {
+    public LiveData<List<OrderItem>> findOrderItemsFroProduct(String productId) {
         return shopRepository.findOrderItemsFroProduct(productId);
     }
 
-    public LiveData<List<OrderItem>> findItemsForOrder(int orderId) {
+    public LiveData<List<OrderItem>> findItemsForOrder(String orderId) {
         return shopRepository.findItemsForOrder(orderId);
     }
 

@@ -21,15 +21,18 @@ public interface ReviewDao {
     @Delete
     void delete(Review review);
 
+    @Query("DELETE FROM review")
+    void deleteAll();
+
     @Query("SELECT * FROM review")
     LiveData<List<Review>> findAll();
 
     @Query("SELECT * FROM review WHERE productId=:productId ORDER BY score DESC")
-    LiveData<List<Review>> findReviewsForProduct(int productId);
+    LiveData<List<Review>> findReviewsForProduct(String productId);
 
     @Query("SELECT * FROM review WHERE score=:score")
     LiveData<List<Review>> findReviewsWithScore(float score);
 
     @Query("SELECT AVG(score) FROM review WHERE productId=:productId")
-    LiveData<Float> findProductScore(int productId);
+    LiveData<Float> findProductScore(String productId);
 }

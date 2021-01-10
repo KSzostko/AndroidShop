@@ -4,6 +4,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.util.UUID;
+
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "orderItem",
@@ -18,39 +20,40 @@ import static androidx.room.ForeignKey.CASCADE;
                         onDelete = CASCADE)
         })
 public class OrderItem {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-    private int productId;
-    private int orderId;
+    @PrimaryKey
+    private String id;
+    private String productId;
+    private String orderId;
     private int quantity;
 
-    public OrderItem(int productId, int orderId, int quantity) {
+    public OrderItem(String productId, String orderId, int quantity) {
+        this.id = UUID.randomUUID().toString();
         this.productId = productId;
         this.orderId = orderId;
         this.quantity = quantity;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 
-    public int getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

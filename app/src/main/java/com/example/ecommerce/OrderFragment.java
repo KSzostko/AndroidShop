@@ -33,7 +33,7 @@ public class OrderFragment extends Fragment {
     private ShopViewModel shopViewModel;
 
     public OrderFragment() {
-
+        // Required empty public constructor
     }
 
     public static OrderFragment newInstance() {
@@ -46,8 +46,8 @@ public class OrderFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
         SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
-        int orderId = preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1);
-        Log.i("OrderFragment", String.valueOf(orderId));
+        String orderId = preferences.getString(BottomNavActivity.CURRENT_ORDER, "");
+        Log.i("OrderFragment", orderId + "siema");
 
         price = view.findViewById(R.id.order_sum);
         buyButton = view.findViewById(R.id.order_button);
@@ -59,7 +59,7 @@ public class OrderFragment extends Fragment {
                 Toast.makeText(getContext(), "Order realised! Thank you for your time.", Toast.LENGTH_SHORT).show();
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt(BottomNavActivity.CURRENT_ORDER, -1);
+                editor.putString(BottomNavActivity.CURRENT_ORDER, "");
                 editor.apply();
             }
         });
@@ -67,14 +67,14 @@ public class OrderFragment extends Fragment {
         orderItems.setLayoutManager(new LinearLayoutManager(view.getContext()));
         orderItems.setAdapter(adapter);
 
-        if(orderId != -1) {
+        if(!orderId.equals("")) {
             shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
             shopViewModel.findItemsForOrder(orderId).observe(getViewLifecycleOwner(), new Observer<List<OrderItem>>() {
                 @Override
                 public void onChanged(List<OrderItem> orderItems) {
                     Log.i("OrderFragment", "there is already some order!");
                     for(OrderItem item : orderItems) {
-                        Log.i("OrderFragment", String.valueOf(item.getId()));
+                        Log.i("OrderFragment", item.getId());
                     }
                     adapter.setItems(orderItems);
                 }

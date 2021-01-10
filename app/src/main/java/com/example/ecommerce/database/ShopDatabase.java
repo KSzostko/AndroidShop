@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Product.class, Review.class, OrderItem.class, Order.class}, version = 1, exportSchema = true)
+@Database(entities = {Product.class, Review.class, OrderItem.class, Order.class}, version = 2, exportSchema = true)
 public abstract class ShopDatabase extends RoomDatabase {
     public abstract ProductDao productDao();
     public abstract ReviewDao reviewDao();
@@ -45,13 +45,13 @@ public abstract class ShopDatabase extends RoomDatabase {
                 dao.insert(product1);
                 dao.insert(product2);
 
-//                OrderItemDao orderItemDao = INSTANCE.orderItemDao();
-//                OrderDao orderDao = INSTANCE.orderDao();
-//                ReviewDao reviewDao = INSTANCE.reviewDao();
+                OrderItemDao orderItemDao = INSTANCE.orderItemDao();
+                OrderDao orderDao = INSTANCE.orderDao();
+                ReviewDao reviewDao = INSTANCE.reviewDao();
 //
-//                orderItemDao.deleteAll();
-//                orderDao.deleteAll();
-//                reviewDao.deleteAll();
+                orderItemDao.deleteAll();
+                orderDao.deleteAll();
+                reviewDao.deleteAll();
             });
         }
     };
@@ -62,7 +62,8 @@ public abstract class ShopDatabase extends RoomDatabase {
                 if(INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             ShopDatabase.class, "shop_db")
-//                            .addCallback(sRoomDatabaseCallback)
+                            .addCallback(sRoomDatabaseCallback)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

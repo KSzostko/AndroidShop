@@ -2,7 +2,6 @@ package com.example.ecommerce;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +36,7 @@ public class MainFragment extends Fragment {
     private TextView bestsellerName;
     private TextView bestsellerPrice;
     private ImageView bestsellerImageView;
-    private RatingBar bestsellserRating;
+    private RatingBar bestsellerRating;
 
     public MainFragment() {
 
@@ -62,7 +61,7 @@ public class MainFragment extends Fragment {
         bestsellerName = view.findViewById(R.id.bestseller_name);
         bestsellerPrice = view.findViewById(R.id.bestseller_price);
         bestsellerImageView = view.findViewById(R.id.bestseller_image);
-        bestsellserRating = view.findViewById(R.id.bestseller_rating);
+        bestsellerRating = view.findViewById(R.id.bestseller_rating);
 
         recommendedRating.setRating(5);
 
@@ -120,8 +119,8 @@ public class MainFragment extends Fragment {
                     if(aFloat == null) recommendedRating.setRating(0);
                     else recommendedRating.setRating(aFloat);
                 } else {
-                    if(aFloat == null) bestsellserRating.setRating(0);
-                    else bestsellserRating.setRating(aFloat);
+                    if(aFloat == null) bestsellerRating.setRating(0);
+                    else bestsellerRating.setRating(aFloat);
                 }
             }
         });

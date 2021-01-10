@@ -1,8 +1,11 @@
 package com.example.ecommerce.database;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Date;
@@ -16,6 +19,7 @@ import static androidx.room.ForeignKey.CASCADE;
                                   childColumns = "productId",
                                   onDelete = CASCADE))
 public class Review {
+    @NonNull
     @PrimaryKey
     private String id;
     private String productId;
@@ -33,11 +37,12 @@ public class Review {
         this.date = date;
     }
 
+    @NotNull
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NotNull String id) {
         this.id = id;
     }
 

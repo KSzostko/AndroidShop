@@ -1,12 +1,16 @@
 package com.example.ecommerce.database;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
 @Entity(tableName = "product")
 public class Product {
+    @NonNull
     @PrimaryKey
     private String id;
     private String name;
@@ -23,11 +27,12 @@ public class Product {
         this.description = description;
     }
 
+    @NotNull
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NotNull String id) {
         this.id = id;
     }
 

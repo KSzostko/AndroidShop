@@ -59,7 +59,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     // TODO: Rename and change types of parameters
     private ShopViewModel shopViewModel;
     private Product mProduct;
-    private int productId;
+    private String productId;
 
     private ImageView mProductImageView;
     private TextView mProductNameView;
@@ -107,7 +107,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
 
-        productId = Objects.requireNonNull(getActivity()).getIntent().getIntExtra(ProductAdapter.PRODUCT_ID, -1);
+        productId = Objects.requireNonNull(getActivity()).getIntent().getStringExtra(ProductAdapter.PRODUCT_ID);
 
         mProductImageView = view.findViewById(R.id.details_image);
         mProductNameView = view.findViewById(R.id.details_name);
@@ -148,8 +148,8 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                 SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
                 Log.i("ProductDetailsFragment", "siema");
 
-                int orderId = preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1);
-                if(orderId == -1) {
+                String orderId = preferences.getString(BottomNavActivity.CURRENT_ORDER, "");
+                if(orderId.equals("")) {
                     Log.i("ProductDetailsFragment", "Creating new order");
                     Order order = new Order("pending");
                     shopViewModel.insertOrder(order);
@@ -158,11 +158,11 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                     shopViewModel.insertOrderItem(item);
 
                     SharedPreferences.Editor prefEditor = preferences.edit();
-                    prefEditor.putInt(BottomNavActivity.CURRENT_ORDER, order.getId());
+                    prefEditor.putString(BottomNavActivity.CURRENT_ORDER, order.getId());
                     prefEditor.apply();
                 } else {
                     // append existing order
-                    Log.i("ProductDetailsFragment", String.valueOf(preferences.getInt(BottomNavActivity.CURRENT_ORDER, -1)));
+                    Log.i("ProductDetailsFragment", preferences.getString(BottomNavActivity.CURRENT_ORDER, ""));
                 }
             }
         });
@@ -241,9 +241,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                         .load(mProduct.getImage())
                         .into(mProductImageView);
 
-                mAdapter.addFragment(new ReviewsTabFragment(productId), "Reviews");
-                mAdapter.addFragment(new DescriptionTabFragment(mProduct.getDescription()), "Description");
-                mAdapter.addFragment(new WriteReviewFragment(productId), "Your Review");
+                mAdapter.addFragment(ReviewsTabFragment.newInstance(productId), "Reviews");
+                mAdapter.addFragment(DescriptionTabFragment.newInstance(mProduct.getDescription()), "Description");
+                mAdapter.addFragment(WriteReviewFragment.newInstance(productId), "Your Review");
 
                 mViewPager.setAdapter(mAdapter);
                 mTabLayout.setupWithViewPager(mViewPager);

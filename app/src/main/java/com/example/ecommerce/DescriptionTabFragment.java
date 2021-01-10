@@ -11,11 +11,32 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class DescriptionTabFragment extends Fragment {
+    private static final String DESCRIPTION_TEXT = "DESC";
+
     private TextView mDescriptionView;
     private String description;
 
-    public DescriptionTabFragment(String description) {
-        this.description = description;
+    public DescriptionTabFragment() {
+        // Required empty public constructor
+    }
+
+    public static DescriptionTabFragment newInstance(String description) {
+        DescriptionTabFragment fragment = new DescriptionTabFragment();
+
+        Bundle args = new Bundle();
+        args.putString(DESCRIPTION_TEXT, description);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if(getArguments() != null) {
+            description = getArguments().getString(DESCRIPTION_TEXT);
+        }
     }
 
     @Nullable

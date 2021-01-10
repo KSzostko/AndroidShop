@@ -22,11 +22,32 @@ import com.example.ecommerce.dummy.DummyContent;
 import java.util.List;
 
 public class ReviewsTabFragment extends Fragment {
-    private ReviewAdapter adapter = new ReviewAdapter();
-    private int productId;
+    private static final String ARG_PRODUCT_ID = "ARG_PRODUCT_ID";
 
-    public ReviewsTabFragment(int productId) {
-        this.productId = productId;
+    private ReviewAdapter adapter = new ReviewAdapter();
+    private String productId;
+
+    public ReviewsTabFragment() {
+        // Required empty public constructor
+    }
+
+    public static ReviewsTabFragment newInstance(String productId) {
+        ReviewsTabFragment fragment = new ReviewsTabFragment();
+
+        Bundle args = new Bundle();
+        args.putString(ARG_PRODUCT_ID, productId);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if(getArguments() != null) {
+            productId = getArguments().getString(ARG_PRODUCT_ID);
+        }
     }
 
     @Nullable

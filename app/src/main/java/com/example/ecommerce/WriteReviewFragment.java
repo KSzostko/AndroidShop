@@ -26,16 +26,37 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class WriteReviewFragment extends Fragment {
+    private static final String ARG_PRODUCT_ID = "ARG_PRODUCT_ID";
+
     private EditText descriptionView;
     private RatingBar ratingBar;
     private Button submitButton;
 
-    private int productId;
+    private String productId;
     private String descriptionText;
     private float currRating;
 
-    public WriteReviewFragment(int productId) {
-        this.productId = productId;
+    public WriteReviewFragment() {
+        // Required empty public constructor
+    }
+
+    public static WriteReviewFragment newInstance(String productId) {
+        WriteReviewFragment fragment = new WriteReviewFragment();
+
+        Bundle args = new Bundle();
+        args.putString(ARG_PRODUCT_ID, productId);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if(getArguments() != null) {
+            productId = getArguments().getString(ARG_PRODUCT_ID);
+        }
     }
 
     @Nullable

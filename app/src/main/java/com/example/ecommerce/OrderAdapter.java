@@ -1,5 +1,6 @@
 package com.example.ecommerce;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(mItems != null) {
             OrderItem item = mItems.get(position);
+            Log.i("OrderAdapter", item.getProductId());
 
             ShopViewModel shopViewModel = new ViewModelProvider((ViewModelStoreOwner) holder.itemView.getContext()).get(ShopViewModel.class);
             shopViewModel.findProduct(item.getProductId()).observe((LifecycleOwner) holder.itemView.getContext(), new Observer<Product>() {

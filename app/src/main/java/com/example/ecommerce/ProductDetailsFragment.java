@@ -146,11 +146,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                 // TODO: create new order item
 
                 SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
-                Log.i("ProductDetailsFragment", "siema");
 
                 String orderId = preferences.getString(BottomNavActivity.CURRENT_ORDER, "");
                 if(orderId.equals("")) {
-                    Log.i("ProductDetailsFragment", "Creating new order");
                     Order order = new Order("pending");
                     shopViewModel.insertOrder(order);
 
@@ -162,7 +160,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                     prefEditor.apply();
                 } else {
                     // append existing order
-                    Log.i("ProductDetailsFragment", preferences.getString(BottomNavActivity.CURRENT_ORDER, ""));
+                    // TODO: check if this item already exists in this order
+                    OrderItem item = new OrderItem(productId, orderId, 1);
+                    shopViewModel.insertOrderItem(item);
                 }
             }
         });

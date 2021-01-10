@@ -86,7 +86,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             this.product = product;
 
             mOrderItemName.setText(product.getName());
-            mOrderItemQuantity.setText(item.getQuantity());
+            mOrderItemQuantity.setText(String.valueOf(item.getQuantity()));
             Picasso.get()
                     .load(product.getImage())
                     .into(mOrderItemImage);

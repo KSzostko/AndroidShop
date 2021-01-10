@@ -47,7 +47,6 @@ public class OrderFragment extends Fragment {
 
         SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
         String orderId = preferences.getString(BottomNavActivity.CURRENT_ORDER, "");
-        Log.i("OrderFragment", orderId + "siema");
 
         price = view.findViewById(R.id.order_sum);
         buyButton = view.findViewById(R.id.order_button);
@@ -72,10 +71,6 @@ public class OrderFragment extends Fragment {
             shopViewModel.findItemsForOrder(orderId).observe(getViewLifecycleOwner(), new Observer<List<OrderItem>>() {
                 @Override
                 public void onChanged(List<OrderItem> orderItems) {
-                    Log.i("OrderFragment", "there is already some order!");
-                    for(OrderItem item : orderItems) {
-                        Log.i("OrderFragment", item.getId());
-                    }
                     adapter.setItems(orderItems);
                 }
             });

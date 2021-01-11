@@ -159,10 +159,19 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                     prefEditor.putString(BottomNavActivity.CURRENT_ORDER, order.getId());
                     prefEditor.apply();
                 } else {
-                    // append existing order
-                    // TODO: check if this item already exists in this order
-                    OrderItem item = new OrderItem(productId, orderId, 1);
-                    shopViewModel.insertOrderItem(item);
+                    // this changes quantity too much
+                    shopViewModel.findProductInOrder(productId, orderId).observe(getViewLifecycleOwner(), new Observer<OrderItem>() {
+                        @Override
+                        public void onChanged(OrderItem item) {
+                            if(item != null) {
+                                item.setQuantity(item.getQuantity() + 1);
+                                shopViewModel.updateOrderItem(item);
+                            } else {
+                                OrderItem orderItem = new OrderItem(productId, orderId, 1);
+                                shopViewModel.insertOrderItem(orderItem);
+                            }
+                        }
+                    });
                 }
             }
         });

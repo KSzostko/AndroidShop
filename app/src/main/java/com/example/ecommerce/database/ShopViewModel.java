@@ -89,6 +89,10 @@ public class ShopViewModel extends AndroidViewModel {
         return shopRepository.findItemsForOrder(orderId);
     }
 
+    public LiveData<OrderItem> findProductInOrder(String productId, String orderId) {
+        return shopRepository.findProductInOrder(productId, orderId);
+    }
+
     public void insertOrderItem(OrderItem item) {
         shopRepository.insertOrderItem(item);
     }

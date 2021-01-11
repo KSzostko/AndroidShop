@@ -111,6 +111,10 @@ public class ShopRepository {
         return orderItemDao.findItemsForOrder(orderId);
     }
 
+    public LiveData<OrderItem> findProductInOrder(String productId, String orderId) {
+        return orderItemDao.findProductInOrder(productId, orderId);
+    }
+
     public void insertOrderItem(OrderItem item) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             orderItemDao.insert(item);

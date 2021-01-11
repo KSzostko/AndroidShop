@@ -27,6 +27,9 @@ public interface OrderItemDao {
     @Query("SELECT * FROM orderItem")
     LiveData<List<OrderItem>> findAll();
 
+    @Query("SELECT * FROM orderItem WHERE productId=:productId AND orderId=:orderId")
+    LiveData<OrderItem> findProductInOrder(String productId, String orderId);
+
     @Query("SELECT * FROM orderItem WHERE productId=:productId")
     LiveData<List<OrderItem>> findOrderItemsForProduct(String productId);
 

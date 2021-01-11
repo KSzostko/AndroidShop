@@ -55,6 +55,10 @@ public class OrderFragment extends Fragment {
         buyButton = view.findViewById(R.id.order_button);
         orderItems = view.findViewById(R.id.order_recyclerview);
 
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString(BottomNavActivity.CURRENT_ORDER, "");
+//        editor.apply();
+
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

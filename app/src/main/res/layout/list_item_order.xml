@@ -50,6 +50,7 @@
             app:layout_constraintTop_toBottomOf="@id/orderitem_name">
 
             <Button
+                android:id="@+id/orderitem_quantity_add"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/margin_small"
@@ -66,10 +67,12 @@
                 android:background="@android:color/transparent"
                 android:ems="10"
                 android:inputType="numberSigned"
+                android:imeOptions="actionDone"
                 android:text="1"
                 android:textAlignment="center" />
 
             <Button
+                android:id="@+id/orderitem_quantity_remove"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_small"

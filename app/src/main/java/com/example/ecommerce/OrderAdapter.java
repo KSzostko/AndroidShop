@@ -1,12 +1,16 @@
 package com.example.ecommerce;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
@@ -26,6 +30,7 @@ import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
     private List<OrderItem> mItems;
+    private ShopViewModel shopViewModel;
 
     @NonNull
     @Override
@@ -40,9 +45,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(mItems != null) {
             OrderItem item = mItems.get(position);
-            Log.i("OrderAdapter", item.getProductId());
 
-            ShopViewModel shopViewModel = new ViewModelProvider((ViewModelStoreOwner) holder.itemView.getContext()).get(ShopViewModel.class);
+            shopViewModel = new ViewModelProvider((ViewModelStoreOwner) holder.itemView.getContext()).get(ShopViewModel.class);
             shopViewModel.findProduct(item.getProductId()).observe((LifecycleOwner) holder.itemView.getContext(), new Observer<Product>() {
                 @Override
                 public void onChanged(Product product) {
@@ -69,6 +73,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         private TextView mOrderItemName;
         private EditText mOrderItemQuantity;
         private ImageView mOrderItemImage;
+        private Button mAddButton;
+        private Button mRemoveButton;
         private OrderItem orderItem;
         private Product product;
 
@@ -79,6 +85,42 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             mOrderItemName = view.findViewById(R.id.orderitem_name);
             mOrderItemQuantity = view.findViewById(R.id.orderitem_quantity);
             mOrderItemImage = (ImageView) view.findViewById(R.id.orderitem_image);
+            mAddButton = view.findViewById(R.id.orderitem_quantity_add);
+            mRemoveButton = view.findViewById(R.id.orderitem_quantity_remove);
+
+            mOrderItemQuantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if(actionId == EditorInfo.IME_ACTION_DONE) {
+                        orderItem.setQuantity(Integer.parseInt(mOrderItemQuantity.getText().toString()));
+                        shopViewModel.updateOrderItem(orderItem);
+
+                        return true;
+                    }
+
+                    return false;
+                }
+            });
+
+            mAddButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    orderItem.setQuantity(orderItem.getQuantity() + 1);
+                    shopViewModel.updateOrderItem(orderItem);
+                }
+            });
+
+            mRemoveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(orderItem.getQuantity() != 1) {
+                        orderItem.setQuantity(orderItem.getQuantity() - 1);
+                        shopViewModel.updateOrderItem(orderItem);
+                    } else {
+                        shopViewModel.deleteOrderItem(orderItem);
+                    }
+                }
+            });
         }
 
         public void bind(OrderItem item, Product product) {

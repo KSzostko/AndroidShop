@@ -113,6 +113,10 @@ public class ShopViewModel extends AndroidViewModel {
         return shopRepository.findOrdersWithStatus(status);
     }
 
+    public LiveData<Order> findOrder(String id) {
+        return shopRepository.findOrder(id);
+    }
+
     public void insertOrder(Order order) {
         shopRepository.insertOrder(order);
     }

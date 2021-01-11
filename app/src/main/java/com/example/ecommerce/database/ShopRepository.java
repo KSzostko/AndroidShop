@@ -141,6 +141,10 @@ public class ShopRepository {
         return orderDao.findOrdersWithStatus(status);
     }
 
+    public LiveData<Order> findOrder(String id) {
+        return orderDao.findOrder(id);
+    }
+
     public void insertOrder(Order order) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             orderDao.insert(order);

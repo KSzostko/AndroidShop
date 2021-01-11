@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ecommerce.database.Order;
 import com.example.ecommerce.database.OrderItem;
 import com.example.ecommerce.database.ShopViewModel;
 import com.example.ecommerce.dummy.DummyContent;
@@ -45,6 +46,8 @@ public class OrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
+        shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
+
         SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
         String orderId = preferences.getString(BottomNavActivity.CURRENT_ORDER, "");
 
@@ -55,11 +58,27 @@ public class OrderFragment extends Fragment {
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Order realised! Thank you for your time.", Toast.LENGTH_SHORT).show();
+                if(!orderId.equals("")) {
+                    Toast.makeText(getContext(), "Order realised! Thank you for your time.", Toast.LENGTH_SHORT).show();
 
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString(BottomNavActivity.CURRENT_ORDER, "");
-                editor.apply();
+                    shopViewModel.findOrder(orderId).observe(getViewLifecycleOwner(), new Observer<Order>() {
+                        boolean wasUpdated = false;
+
+                        @Override
+                        public void onChanged(Order order) {
+                            if(!wasUpdated) {
+                                order.setStatus("realised");
+                                wasUpdated = true;
+                            }
+                        }
+                    });
+
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString(BottomNavActivity.CURRENT_ORDER, "");
+                    editor.apply();
+                } else {
+                    Toast.makeText(getContext(), "You don't have any products in your cart", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

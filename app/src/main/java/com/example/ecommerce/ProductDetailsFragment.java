@@ -143,7 +143,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "This will put product on your list", Toast.LENGTH_SHORT).show();
-                // TODO: create new order item
+                Log.i("ProductDetailsFragment", "Clicked");
 
                 SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
 
@@ -161,14 +161,22 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                 } else {
                     // this changes quantity too much
                     shopViewModel.findProductInOrder(productId, orderId).observe(getViewLifecycleOwner(), new Observer<OrderItem>() {
+                        boolean wasUpdated = false;
                         @Override
                         public void onChanged(OrderItem item) {
+                            // otherwise this gets called multiple times
                             if(item != null) {
-                                item.setQuantity(item.getQuantity() + 1);
-                                shopViewModel.updateOrderItem(item);
+                                if(!wasUpdated) {
+                                    item.setQuantity(item.getQuantity() + 1);
+                                    shopViewModel.updateOrderItem(item);
+                                    wasUpdated = true;
+                                }
                             } else {
-                                OrderItem orderItem = new OrderItem(productId, orderId, 1);
-                                shopViewModel.insertOrderItem(orderItem);
+                                if(!wasUpdated) {
+                                    OrderItem orderItem = new OrderItem(productId, orderId, 1);
+                                    shopViewModel.insertOrderItem(orderItem);
+                                    wasUpdated = true;
+                                }
                             }
                         }
                     });

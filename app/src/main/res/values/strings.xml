@@ -10,6 +10,8 @@
     <string name="recommended_text">Our recommendation</string>
     <string name="bestseller_text">Bestseller</string>
     <string name="buy_text">Checkout</string>
+    <string name="send_text">Send</string>
+    <string name="leave_a_review">Leave a review</string>
 
     <!--  Spinner  -->
     <!--  This will probably change or will be rendered dynamically  -->

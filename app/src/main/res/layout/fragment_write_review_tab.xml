@@ -18,7 +18,7 @@
             android:inputType="textMultiLine"
             android:minLines="4"
             android:gravity="top|start"
-            android:hint="Leave a review"
+            android:hint="@string/leave_a_review"
             android:scrollbars="vertical"/>
 
         <androidx.appcompat.widget.AppCompatRatingBar
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_regular"
             android:layout_marginEnd="@dimen/margin_regular"
-            android:text="Send"/>
+            android:text="@string/send_text"/>
     </LinearLayout>
 
 </ScrollView>

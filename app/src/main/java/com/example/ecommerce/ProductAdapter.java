@@ -107,7 +107,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             this.product = product;
 
             mTitleView.setText(product.getName());
-            mProductPriceView.setText(String.valueOf(product.getPrice()));
+            mProductPriceView.setText(this.itemView.getContext().getResources().getString(R.string.product_price, product.getPrice()));
 
             mProductRatingView.setRating(score);
 

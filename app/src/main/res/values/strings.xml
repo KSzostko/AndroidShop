@@ -16,6 +16,10 @@
     <string name="no_products">You don\'t have any products in your cart</string>
     <string name="order_realised">Order realised! Thank you for your time.</string>
     <string name="review_added">You have added a review. Thank you!</string>
+    <string name="title_activity_nav_bottom">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_order">Order</string>
 
     <!--  Spinner  -->
     <!--  This will probably change or will be rendered dynamically  -->
@@ -24,8 +28,4 @@
         <item>USD</item>
         <item>EUR</item>
     </string-array>
-    <string name="title_activity_nav_bottom">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 </resources>

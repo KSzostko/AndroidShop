@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_main" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_search"
         android:name="com.example.ecommerce.ProductListFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_search"
         tools:layout="@layout/fragment_product_list" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_order"
         android:name="com.example.ecommerce.OrderFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_order"
         tools:layout="@layout/fragment_order" />
 </navigation>

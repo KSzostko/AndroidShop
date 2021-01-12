@@ -17,6 +17,10 @@
     <string name="no_products">Twój koszyk jest pusty</string>
     <string name="order_realised">Zamówienie zrealizowane! Dziękujemy!</string>
     <string name="review_added">Dodałeś swoją recenzję. Dziękujemy!</string>
+    <string name="title_activity_nav_bottom">MainActivity</string>
+    <string name="title_home">Strona główna</string>
+    <string name="title_search">Szukaj</string>
+    <string name="title_order">Koszyk</string>
 
     <string-array name="spinner_labels">
         <item>PLN</item>

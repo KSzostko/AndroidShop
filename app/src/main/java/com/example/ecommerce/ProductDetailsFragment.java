@@ -144,9 +144,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
             public void onClick(View v) {
                 Toast.makeText(getContext(), "This will put product on your list", Toast.LENGTH_SHORT).show();
 
-                SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
+                SharedPreferences preferences = getActivity().getSharedPreferences(ProductDetailsActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
 
-                String orderId = preferences.getString(BottomNavActivity.CURRENT_ORDER, "");
+                String orderId = preferences.getString(ProductDetailsActivity.CURRENT_ORDER, "");
                 if(orderId.equals("")) {
                     Order order = new Order("pending");
                     shopViewModel.insertOrder(order);
@@ -155,7 +155,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                     shopViewModel.insertOrderItem(item);
 
                     SharedPreferences.Editor prefEditor = preferences.edit();
-                    prefEditor.putString(BottomNavActivity.CURRENT_ORDER, order.getId());
+                    prefEditor.putString(ProductDetailsActivity.CURRENT_ORDER, order.getId());
                     prefEditor.apply();
                 } else {
                     // this changes quantity too much

@@ -47,8 +47,8 @@ public class OrderFragment extends Fragment {
 
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
-        SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
-        String orderId = preferences.getString(BottomNavActivity.CURRENT_ORDER, "");
+        SharedPreferences preferences = getActivity().getSharedPreferences(ProductDetailsActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
+        String orderId = preferences.getString(ProductDetailsActivity.CURRENT_ORDER, "");
 
         price = view.findViewById(R.id.order_sum);
         buyButton = view.findViewById(R.id.order_button);
@@ -77,7 +77,7 @@ public class OrderFragment extends Fragment {
                     });
 
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString(BottomNavActivity.CURRENT_ORDER, "");
+                    editor.putString(ProductDetailsActivity.CURRENT_ORDER, "");
                     editor.apply();
                 } else {
                     Toast.makeText(getContext(), getString(R.string.no_products), Toast.LENGTH_SHORT).show();

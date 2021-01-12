@@ -66,7 +66,7 @@ public class ProductListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
 //        TODO: add working search again
-        String searchedText = requireActivity().getIntent().getStringExtra(BottomNavActivity.SEARCHED_TEXT);
+        String searchedText = requireActivity().getIntent().getStringExtra(ProductDetailsActivity.SEARCHED_TEXT);
         searchedText = "";
 
         if (view instanceof RecyclerView) {

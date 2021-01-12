@@ -28,11 +28,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Wartość produktów: 2000 zł"/>
+        <!-- TODO: use order_total string resource here     -->
 
         <Button
             android:id="@+id/order_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Złóż zamówienie" />
+            android:text="@string/buy_text" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

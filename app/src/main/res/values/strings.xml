@@ -5,7 +5,9 @@
     <string name="add_to_order">Add to order</string>
     <string name="orderitem_subtract">-</string>
     <string name="orderitem_add">+</string>
-    <string name="orderitem_price">%.2f PLN</string>
+    <string name="product_price">%.2f PLN</string>
+    <string name="recommended_text">Our recommendation</string>
+    <string name="bestseller_text">Bestseller</string>
 
     <!--  Spinner  -->
     <!--  This will probably change or will be rendered dynamically  -->

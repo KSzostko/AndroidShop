@@ -20,8 +20,7 @@
         <TextView
             android:id="@+id/review_date"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="29.09.2020" />
+            android:layout_height="match_parent" />
 
         <androidx.appcompat.widget.AppCompatRatingBar
             android:id="@+id/review_rating"
@@ -40,8 +39,7 @@
         android:layout_marginEnd="@dimen/margin_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/review_info"
-        android:text="Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet" />
+        app:layout_constraintTop_toBottomOf="@id/review_info" />
 
     <!-- border -->
     <FrameLayout

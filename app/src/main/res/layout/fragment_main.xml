@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:text="Our recommendation" />
+            android:text="@string/recommended_text" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/recommended_card"
@@ -52,8 +52,7 @@
                     android:id="@+id/recommended_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:text="MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X" />
+                    android:layout_marginBottom="@dimen/margin_small" />
 
                 <androidx.appcompat.widget.AppCompatRatingBar
                     style="?android:attr/ratingBarStyleSmall"
@@ -67,8 +66,7 @@
                     android:id="@+id/recommended_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
-                    android:text="8080,00 PLN"/>
+                    android:textAlignment="textEnd" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -81,7 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:text="Bestseller" />
+            android:text="@string/bestseller_text" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/bestseller_card"
@@ -112,8 +110,7 @@
                     android:id="@+id/bestseller_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:text="MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X" />
+                    android:layout_marginBottom="@dimen/margin_small" />
 
                 <androidx.appcompat.widget.AppCompatRatingBar
                     style="?android:attr/ratingBarStyleSmall"
@@ -127,8 +124,7 @@
                     android:id="@+id/bestseller_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
-                    android:text="8080,00 PLN"/>
+                    android:textAlignment="textEnd" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

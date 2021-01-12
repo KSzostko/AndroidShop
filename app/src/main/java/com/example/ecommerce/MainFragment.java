@@ -63,8 +63,6 @@ public class MainFragment extends Fragment {
         bestsellerImageView = view.findViewById(R.id.bestseller_image);
         bestsellerRating = view.findViewById(R.id.bestseller_rating);
 
-        recommendedRating.setRating(5);
-
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
         shopViewModel.findAllProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
@@ -72,13 +70,13 @@ public class MainFragment extends Fragment {
                 productsList = products;
 
                 recommendedName.setText(products.get(0).getName());
-                recommendedPrice.setText(String.valueOf(products.get(0).getPrice()));
+                recommendedPrice.setText(getString(R.string.product_price, products.get(0).getPrice()));
                 Picasso.get()
                         .load(products.get(0).getImage())
                         .into(recommendedImageView);
 
                 bestsellerName.setText(products.get(1).getName());
-                bestsellerPrice.setText(String.valueOf(products.get(1).getPrice()));
+                bestsellerPrice.setText(getString(R.string.product_price, products.get(1).getPrice()));
                 Picasso.get()
                         .load(products.get(1).getImage())
                         .into(bestsellerImageView);

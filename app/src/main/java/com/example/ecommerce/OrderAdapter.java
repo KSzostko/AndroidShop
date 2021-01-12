@@ -71,6 +71,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private View mView;
         private TextView mOrderItemName;
+        private TextView mOrderItemPrice;
         private EditText mOrderItemQuantity;
         private ImageView mOrderItemImage;
         private Button mAddButton;
@@ -78,11 +79,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         private OrderItem orderItem;
         private Product product;
 
+        // TODO: Calculate total price
+
         public ViewHolder(View view) {
             super(view);
             mView = view;
 
             mOrderItemName = view.findViewById(R.id.orderitem_name);
+            mOrderItemPrice = view.findViewById(R.id.orderitem_price);
             mOrderItemQuantity = view.findViewById(R.id.orderitem_quantity);
             mOrderItemImage = (ImageView) view.findViewById(R.id.orderitem_image);
             mAddButton = view.findViewById(R.id.orderitem_quantity_add);
@@ -128,6 +132,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             this.product = product;
 
             mOrderItemName.setText(product.getName());
+            mOrderItemPrice.setText(this.itemView.getContext().getResources().getString(R.string.orderitem_price, product.getPrice()));
             mOrderItemQuantity.setText(String.valueOf(item.getQuantity()));
             Picasso.get()
                     .load(product.getImage())

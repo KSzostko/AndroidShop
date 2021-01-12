@@ -29,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_regular"
-            android:text="MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -57,7 +56,7 @@
                 android:fontFamily="sans-serif-light"
                 android:minHeight="30dip"
                 android:padding="0dp"
-                android:text="+"
+                android:text="@string/orderitem_add"
                 android:textSize="30sp" />
 
             <EditText
@@ -68,7 +67,6 @@
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:imeOptions="actionDone"
-                android:text="1"
                 android:textAlignment="center" />
 
             <Button
@@ -79,11 +77,12 @@
                 android:fontFamily="sans-serif-light"
                 android:minHeight="30dip"
                 android:padding="0dp"
-                android:text="-"
+                android:text="@string/orderitem_subtract"
                 android:textSize="30sp" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/orderitem_price"
             style="@style/OrderItemPrice"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

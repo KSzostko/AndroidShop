@@ -5,6 +5,7 @@
     <dimen name="margin_regular">16dp</dimen>
     <dimen name="margin_big">32dp</dimen>
     <dimen name="list_padding">20dp</dimen>
+    <dimen name="big_list_padding">60dp</dimen>
     <dimen name="fab_margin_bottom">40dp</dimen>
     <dimen name="rating_margin_small">2dp</dimen>
     <dimen name="layout_margin_big">64dp</dimen>

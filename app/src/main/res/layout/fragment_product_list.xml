@@ -6,8 +6,7 @@
     android:name="com.example.ecommerce.ProductListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/list_padding"
-    android:paddingBottom="@dimen/list_padding"
+    android:paddingBottom="@dimen/big_list_padding"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ProductListFragment"
     tools:listitem="@layout/fragment_list_item_product" />

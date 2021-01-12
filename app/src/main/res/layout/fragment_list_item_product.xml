@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginBottom="@dimen/margin_big" />
-            
+
             <TextView
                 style="@style/ProductPriceSmallStyle"
                 android:id="@+id/product_price"

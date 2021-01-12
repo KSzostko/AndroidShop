@@ -81,13 +81,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public ViewHolder(View view) {
             super(view);
             mView = view;
+            mView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
 
-            mTitleView = (TextView) view.findViewById(R.id.product_title);
-            mProductPriceView = (TextView) view.findViewById(R.id.product_price);
-            mProductRatingView = (RatingBar) view.findViewById(R.id.product_rating);
-            mProductImageView = (ImageView) view.findViewById(R.id.product_image);
+            mTitleView = (TextView) mView.findViewById(R.id.product_title);
+            mProductPriceView = (TextView) mView.findViewById(R.id.product_price);
+            mProductRatingView = (RatingBar) mView.findViewById(R.id.product_rating);
+            mProductImageView = (ImageView) mView.findViewById(R.id.product_image);
 
-            view.setOnClickListener(this);
+            mView.setOnClickListener(this);
         }
 
         @Override

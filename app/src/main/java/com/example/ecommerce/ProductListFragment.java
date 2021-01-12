@@ -68,7 +68,9 @@ public class ProductListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_list, container, false);
 
-        String searchedText = Objects.requireNonNull(getActivity()).getIntent().getStringExtra(BottomNavActivity.SEARCHED_TEXT);
+//        TODO: add working search again
+        String searchedText = requireActivity().getIntent().getStringExtra(BottomNavActivity.SEARCHED_TEXT);
+        searchedText = "";
 
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -86,6 +88,7 @@ public class ProductListFragment extends Fragment {
         shopViewModel.findProductsWithName(searchedText).observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
+                Log.i("ProductListFragment", "siema " + products.get(0).getName());
                 adapter.setProducts(products);
             }
         });

@@ -35,21 +35,21 @@ public abstract class BottomNavActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent intent;
-                switch(item.getItemId()) {
-                    case R.id.action_home:
-                        intent = new Intent(BottomNavActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.action_search:
-                        intent = new Intent(BottomNavActivity.this, SearchListActivity.class);
-                        intent.putExtra(SEARCHED_TEXT, "");
-                        startActivity(intent);
-                        break;
-                    case R.id.action_order:
-                        intent = new Intent(BottomNavActivity.this, OrderActivity.class);
-                        startActivity(intent);
-                        break;
-                }
+//                switch(item.getItemId()) {
+//                    case R.id.action_home:
+//                        intent = new Intent(BottomNavActivity.this, MainActivity.class);
+//                        startActivity(intent);
+//                        break;
+//                    case R.id.action_search:
+//                        intent = new Intent(BottomNavActivity.this, SearchListActivity.class);
+//                        intent.putExtra(SEARCHED_TEXT, "");
+//                        startActivity(intent);
+//                        break;
+//                    case R.id.action_order:
+//                        intent = new Intent(BottomNavActivity.this, OrderActivity.class);
+//                        startActivity(intent);
+//                        break;
+//                }
 
                 return true;
             }

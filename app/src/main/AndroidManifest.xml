@@ -12,12 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecommerce"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OrderActivity"></activity>
-        <activity android:name=".ProductDetailsActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".SearchListActivity" />
-        <activity android:name=".BottomNavActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".NavBottomActivity"
+            android:label="@string/title_activity_nav_bottom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

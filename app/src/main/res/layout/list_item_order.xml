@@ -88,7 +88,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_big"
             android:gravity="center"
-            android:text="200,00zł"
             app:layout_constraintHorizontal_bias="0.826"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

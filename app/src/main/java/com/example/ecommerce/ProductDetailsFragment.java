@@ -143,7 +143,6 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "This will put product on your list", Toast.LENGTH_SHORT).show();
-                Log.i("ProductDetailsFragment", "Clicked");
 
                 SharedPreferences preferences = getActivity().getSharedPreferences(BottomNavActivity.PREFERENCE_ORDER, Context.MODE_PRIVATE);
 
@@ -258,9 +257,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                         .load(mProduct.getImage())
                         .into(mProductImageView);
 
-                mAdapter.addFragment(ReviewsTabFragment.newInstance(productId), "Reviews");
-                mAdapter.addFragment(DescriptionTabFragment.newInstance(mProduct.getDescription()), "Description");
-                mAdapter.addFragment(WriteReviewFragment.newInstance(productId), "Your Review");
+                mAdapter.addFragment(ReviewsTabFragment.newInstance(productId), getString(R.string.reviews_tab));
+                mAdapter.addFragment(DescriptionTabFragment.newInstance(mProduct.getDescription()), getString(R.string.description_tab));
+                mAdapter.addFragment(WriteReviewFragment.newInstance(productId), getString(R.string.your_review_tab));
 
                 mViewPager.setAdapter(mAdapter);
                 mTabLayout.setupWithViewPager(mViewPager);

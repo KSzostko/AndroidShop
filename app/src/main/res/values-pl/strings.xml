@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ecommerce</string>
+    <string name="add_to_order">Dodaj do zamówienia</string>
+    <string name="orderitem_subtract">-</string>
+    <string name="orderitem_add">+</string>
+    <string name="product_price">%.2f zł</string>
+    <string name="order_total">Total: %.2f zł</string>
+    <string name="recommended_text">Polecamy</string>
+    <string name="bestseller_text">Bestseller</string>
+    <string name="buy_text">Złóż zamówienie</string>
+    <string name="send_text">Wyślij</string>
+    <string name="leave_a_review">Dodaj recenzje</string>
+    <string name="reviews_tab">Recenzje</string>
+    <string name="description_tab">Opis</string>
+    <string name="your_review_tab">Twoja opinia</string>
+    <string name="no_products">Twój koszyk jest pusty</string>
+    <string name="order_realised">Zamówienie zrealizowane! Dziękujemy!</string>
+    <string name="review_added">Dodałeś swoją recenzję. Dziękujemy!</string>
+
+    <string-array name="spinner_labels">
+        <item>PLN</item>
+        <item>USD</item>
+        <item>EUR</item>
+    </string-array>
+</resources>

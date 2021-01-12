@@ -103,7 +103,7 @@ public class WriteReviewFragment extends Fragment {
                 ShopViewModel shopViewModel = new ViewModelProvider(getActivity()).get(ShopViewModel.class);
                 shopViewModel.insertReview(review);
 
-                Toast.makeText(getContext(), "You have added a review. Thank you!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.review_added), Toast.LENGTH_SHORT).show();
                 descriptionView.setText("");
                 ratingBar.setRating(0);
             }

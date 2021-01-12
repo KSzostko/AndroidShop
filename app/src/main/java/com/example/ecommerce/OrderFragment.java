@@ -63,7 +63,7 @@ public class OrderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!orderId.equals("")) {
-                    Toast.makeText(getContext(), "Order realised! Thank you for your time.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.order_realised), Toast.LENGTH_SHORT).show();
 
                     shopViewModel.findOrder(orderId).observe(getViewLifecycleOwner(), new Observer<Order>() {
                         boolean wasUpdated = false;
@@ -81,7 +81,7 @@ public class OrderFragment extends Fragment {
                     editor.putString(BottomNavActivity.CURRENT_ORDER, "");
                     editor.apply();
                 } else {
-                    Toast.makeText(getContext(), "You don't have any products in your cart", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.no_products), Toast.LENGTH_SHORT).show();
                 }
             }
         });

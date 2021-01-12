@@ -1,17 +1,21 @@
 <resources>
     <string name="app_name">ecommerce</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_to_order">Add to order</string>
     <string name="orderitem_subtract">-</string>
     <string name="orderitem_add">+</string>
     <string name="product_price">%.2f PLN</string>
-    <string name="order_total">Total: %.2f</string>
+    <string name="order_total">Total: %.2f PLN</string>
     <string name="recommended_text">Our recommendation</string>
     <string name="bestseller_text">Bestseller</string>
     <string name="buy_text">Checkout</string>
     <string name="send_text">Send</string>
     <string name="leave_a_review">Leave a review</string>
+    <string name="reviews_tab">Reviews</string>
+    <string name="description_tab">Description</string>
+    <string name="your_review_tab">Your Review</string>
+    <string name="no_products">You don\'t have any products in your cart</string>
+    <string name="order_realised">Order realised! Thank you for your time.</string>
+    <string name="review_added">You have added a review. Thank you!</string>
 
     <!--  Spinner  -->
     <!--  This will probably change or will be rendered dynamically  -->

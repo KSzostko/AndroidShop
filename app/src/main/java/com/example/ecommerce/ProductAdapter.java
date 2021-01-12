@@ -81,7 +81,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
 
             mTitleView = (TextView) mView.findViewById(R.id.product_title);
             mProductPriceView = (TextView) mView.findViewById(R.id.product_price);

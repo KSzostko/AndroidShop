@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecommerce.database.Review;
-import com.example.ecommerce.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 

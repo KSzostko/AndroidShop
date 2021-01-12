@@ -19,11 +19,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ecommerce.database.Order;
 import com.example.ecommerce.database.OrderItem;
 import com.example.ecommerce.database.Product;
 import com.example.ecommerce.database.ShopViewModel;
-import com.example.ecommerce.dummy.DummyContent.DummyItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

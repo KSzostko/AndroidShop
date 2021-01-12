@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecommerce.database.Review;
 import com.example.ecommerce.database.ShopViewModel;
-import com.example.ecommerce.dummy.DummyContent;
 
 import java.util.List;
 

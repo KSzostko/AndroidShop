@@ -18,11 +18,8 @@ import android.view.ViewGroup;
 
 import com.example.ecommerce.database.Product;
 import com.example.ecommerce.database.ShopViewModel;
-import com.example.ecommerce.dummy.DummyContent;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A fragment representing a list of Items.

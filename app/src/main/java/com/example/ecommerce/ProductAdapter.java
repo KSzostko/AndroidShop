@@ -18,16 +18,10 @@ import android.widget.TextView;
 
 import com.example.ecommerce.database.Product;
 import com.example.ecommerce.database.ShopViewModel;
-import com.example.ecommerce.dummy.DummyContent.DummyItem;
 import com.squareup.picasso.Picasso;
 
-import java.util.Arrays;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     public static final String PRODUCT_ID = "com.example.ecommerce.PRODUCT_ID";
 

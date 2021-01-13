@@ -36,29 +36,29 @@ public class ProductDetailsActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.search_menu, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.menu_item_search);
-        final SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-//                Intent intent = new Intent(BottomNavActivity.this, SearchListActivity.class);
-//                intent.putExtra(SEARCHED_TEXT, query);
-//                startActivity(intent);
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.search_menu, menu);
+//
+//        MenuItem searchItem = menu.findItem(R.id.menu_item_search);
+//        final SearchView searchView = (SearchView) searchItem.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+////                Intent intent = new Intent(BottomNavActivity.this, SearchListActivity.class);
+////                intent.putExtra(SEARCHED_TEXT, query);
+////                startActivity(intent);
+//
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
 }

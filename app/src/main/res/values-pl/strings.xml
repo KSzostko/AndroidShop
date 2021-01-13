@@ -21,6 +21,7 @@
     <string name="title_home">Strona główna</string>
     <string name="title_search">Szukaj</string>
     <string name="title_order">Koszyk</string>
+    <string name="details_title">Szczegóły</string>
 
     <string-array name="spinner_labels">
         <item>PLN</item>

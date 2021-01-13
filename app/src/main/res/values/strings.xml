@@ -20,6 +20,7 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_order">Order</string>
+    <string name="details_title">Details</string>
 
     <!--  Spinner  -->
     <!--  This will probably change or will be rendered dynamically  -->

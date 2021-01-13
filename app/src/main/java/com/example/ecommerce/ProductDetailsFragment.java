@@ -107,7 +107,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
 
-        productId = Objects.requireNonNull(getActivity()).getIntent().getStringExtra(ProductAdapter.PRODUCT_ID);
+        productId = requireActivity().getIntent().getStringExtra(ProductAdapter.PRODUCT_ID);
 
         mProductImageView = view.findViewById(R.id.details_image);
         mProductNameView = view.findViewById(R.id.details_name);

@@ -45,19 +45,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProductDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProductDetailsFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private static final String PRODUCT_ID = "PRODUCT_ID";
 
     private ShopViewModel shopViewModel;
@@ -78,21 +66,9 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProductDetailsFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static ProductDetailsFragment newInstance(String param1, String param2) {
         ProductDetailsFragment fragment = new ProductDetailsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -196,7 +172,6 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String currency = parent.getItemAtPosition(position).toString();
-        Toast.makeText(getContext(), currency, Toast.LENGTH_SHORT).show();
 
         if(currency.equals("PLN")) {
             if(mProduct != null) mProductPriceView.setText(Double.toString(mProduct.getPrice()));

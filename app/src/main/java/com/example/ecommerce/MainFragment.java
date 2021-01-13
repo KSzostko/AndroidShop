@@ -69,40 +69,42 @@ public class MainFragment extends Fragment {
             public void onChanged(List<Product> products) {
                 productsList = products;
 
-                recommendedName.setText(products.get(0).getName());
-                recommendedPrice.setText(getString(R.string.product_price, products.get(0).getPrice()));
-                Picasso.get()
-                        .load(products.get(0).getImage())
-                        .into(recommendedImageView);
+                if(products.size() >= 2) {
+                    recommendedName.setText(products.get(0).getName());
+                    recommendedPrice.setText(getString(R.string.product_price, products.get(0).getPrice()));
+                    Picasso.get()
+                            .load(products.get(0).getImage())
+                            .into(recommendedImageView);
 
-                bestsellerName.setText(products.get(1).getName());
-                bestsellerPrice.setText(getString(R.string.product_price, products.get(1).getPrice()));
-                Picasso.get()
-                        .load(products.get(1).getImage())
-                        .into(bestsellerImageView);
+                    bestsellerName.setText(products.get(1).getName());
+                    bestsellerPrice.setText(getString(R.string.product_price, products.get(1).getPrice()));
+                    Picasso.get()
+                            .load(products.get(1).getImage())
+                            .into(bestsellerImageView);
 
-                recommendedCard.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), ProductDetailsActivity.class);
-                        intent.putExtra(ProductAdapter.PRODUCT_ID, products.get(0).getId());
+                    recommendedCard.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), ProductDetailsActivity.class);
+                            intent.putExtra(ProductAdapter.PRODUCT_ID, products.get(0).getId());
 
-                        startActivity(intent);
-                    }
-                });
+                            startActivity(intent);
+                        }
+                    });
 
-                bestsellerCard.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), ProductDetailsActivity.class);
-                        intent.putExtra(ProductAdapter.PRODUCT_ID, products.get(1).getId());
+                    bestsellerCard.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), ProductDetailsActivity.class);
+                            intent.putExtra(ProductAdapter.PRODUCT_ID, products.get(1).getId());
 
-                        startActivity(intent);
-                    }
-                });
+                            startActivity(intent);
+                        }
+                    });
 
-                setRating(products.get(0), 0);
-                setRating(products.get(1), 1);
+                    setRating(products.get(0), 0);
+                    setRating(products.get(1), 1);
+                }
             }
         });
 

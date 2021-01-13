@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -57,6 +58,8 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
+    private static final String PRODUCT_ID = "PRODUCT_ID";
+
     private ShopViewModel shopViewModel;
     private Product mProduct;
     private String productId;
@@ -107,7 +110,11 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
 
-        productId = requireActivity().getIntent().getStringExtra(ProductAdapter.PRODUCT_ID);
+        if(savedInstanceState == null) {
+            productId = requireActivity().getIntent().getStringExtra(ProductAdapter.PRODUCT_ID);
+        } else {
+            productId = savedInstanceState.getString(PRODUCT_ID);
+        }
 
         mProductImageView = view.findViewById(R.id.details_image);
         mProductNameView = view.findViewById(R.id.details_name);
@@ -192,7 +199,7 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
         Toast.makeText(getContext(), currency, Toast.LENGTH_SHORT).show();
 
         if(currency.equals("PLN")) {
-            mProductPriceView.setText(Double.toString(mProduct.getPrice()));
+            if(mProduct != null) mProductPriceView.setText(Double.toString(mProduct.getPrice()));
         } else {
             convertPrice(currency);
         }
@@ -275,5 +282,12 @@ public class ProductDetailsFragment extends Fragment implements AdapterView.OnIt
                 else mRatingBar.setRating(aFloat);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString(PRODUCT_ID, productId);
+
+        super.onSaveInstanceState(outState);
     }
 }

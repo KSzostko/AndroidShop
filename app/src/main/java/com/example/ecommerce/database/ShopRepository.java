@@ -19,6 +19,8 @@ public class ShopRepository {
     private OrderDao orderDao;
     private LiveData<List<Order>> orders;
 
+    private OrderItemProductDao orderItemProductDao;
+
     public ShopRepository(Application application) {
         ShopDatabase database = ShopDatabase.getDatabase(application);
 
@@ -161,5 +163,9 @@ public class ShopRepository {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             orderDao.delete(order);
         });
+    }
+
+    public LiveData<Float> orderTotalPrice(String orderId) {
+        return orderItemProductDao.orderTotalPrice(orderId);
     }
 }

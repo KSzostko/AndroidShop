@@ -128,4 +128,8 @@ public class ShopViewModel extends AndroidViewModel {
     public void deleteOrder(Order order) {
         shopRepository.deleteOrder(order);
     }
+
+    public LiveData<Float> orderTotalPrice(String orderId) {
+        return shopRepository.orderTotalPrice(orderId);
+    }
 }

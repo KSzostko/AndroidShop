@@ -30,10 +30,7 @@ import java.util.List;
  * A fragment representing a list of Items.
  */
 public class ProductListFragment extends Fragment {
-
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
     private ShopViewModel shopViewModel;
@@ -47,8 +44,6 @@ public class ProductListFragment extends Fragment {
     public ProductListFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
     public static ProductListFragment newInstance(int columnCount) {
         ProductListFragment fragment = new ProductListFragment();
         Bundle args = new Bundle();
@@ -75,7 +70,7 @@ public class ProductListFragment extends Fragment {
 
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            // TODO: Add swipe functionality
+
             RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));

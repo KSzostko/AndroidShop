@@ -55,7 +55,7 @@ public class OrderFragment extends Fragment {
         orderItems = view.findViewById(R.id.order_recyclerview);
 
 //        SharedPreferences.Editor editor = preferences.edit();
-//        editor.putString(BottomNavActivity.CURRENT_ORDER, "");
+//        editor.putString(ProductDetailsActivity.CURRENT_ORDER, "");
 //        editor.apply();
 
         buyButton.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +96,16 @@ public class OrderFragment extends Fragment {
                     adapter.setItems(orderItems);
                 }
             });
+
+            shopViewModel.orderTotalPrice(orderId).observe(getViewLifecycleOwner(), new Observer<Float>() {
+                @Override
+                public void onChanged(Float aFloat) {
+                    if(aFloat == null) price.setText(getString(R.string.order_total, 0f));
+                    else price.setText(getString(R.string.order_total, aFloat));
+                }
+            });
+        } else {
+            price.setText(getString(R.string.order_total, 0f));
         }
 
         return view;

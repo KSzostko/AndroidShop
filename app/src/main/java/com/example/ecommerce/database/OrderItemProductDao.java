@@ -6,6 +6,6 @@ import androidx.room.Query;
 
 @Dao
 public interface OrderItemProductDao {
-    @Query("SELECT SUM(o.quantity * p.price) FROM product p, orderItem o WHERE o.productId = p.id AND o.orderId = :orderId")
+    @Query("SELECT SUM(o.quantity * p.price) FROM product p, orderItem o WHERE o.productId = p.id AND o.orderId=:orderId")
     LiveData<Float> orderTotalPrice(String orderId);
 }

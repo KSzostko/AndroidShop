@@ -35,6 +35,8 @@ public class ShopRepository {
 
         orderDao = database.orderDao();
         orders = orderDao.findAll();
+
+        orderItemProductDao = database.orderItemProductDao();
     }
 
     public LiveData<List<Product>> findAllProducts() {

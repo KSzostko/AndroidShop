@@ -17,6 +17,7 @@ public abstract class ShopDatabase extends RoomDatabase {
     public abstract ReviewDao reviewDao();
     public abstract OrderItemDao orderItemDao();
     public abstract OrderDao orderDao();
+    public abstract OrderItemProductDao orderItemProductDao();
 
     private static volatile ShopDatabase INSTANCE;
     public static final int NUMBER_OF_THREADS = 4;

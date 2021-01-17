@@ -48,7 +48,7 @@ public abstract class ShopDatabase extends RoomDatabase {
                 if(INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             ShopDatabase.class, "shop_db")
-                            .addCallback(sRoomDatabaseCallback)
+//                            .addCallback(sRoomDatabaseCallback)
                             .fallbackToDestructiveMigration()
                             .build();
                 }
@@ -61,7 +61,7 @@ public abstract class ShopDatabase extends RoomDatabase {
     private static void populateProducts() {
         ProductDao dao = INSTANCE.productDao();
 
-        dao.deleteAll();
+//        dao.deleteAll();
 
         Product product1 = new Product("MSI GeForce RTX 3090 GAMING X TRIO 24GB GDDR6X", 8080.00,
                 "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ampere/rtx-3090/geforce-rtx-3090-shop-300-t.png",

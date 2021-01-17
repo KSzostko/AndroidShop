@@ -89,7 +89,7 @@
             app:layout_constraintTop_toBottomOf="@id/main_bestseller"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="@dimen/layout_margin_big"
+            android:layout_marginBottom="@dimen/card_main_margin"
             app:cardCornerRadius="6dp"
             app:cardElevation="3dp"
             app:cardUseCompatPadding="true">
